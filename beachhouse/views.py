@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import calendar
 from calendar import HTMLCalendar
+from datetime import datetime
 
 # Create your views here.
 
@@ -9,7 +10,7 @@ def base(request):
     return render(request, 'base.html', {})
 
 
-def booking_list_admin(request, year, month):
+def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     user = 'admin'
     month = month.capitalize()
     # converting month to numbers
@@ -19,10 +20,15 @@ def booking_list_admin(request, year, month):
     # print out a calendar
     cal = HTMLCalendar().formatmonth(year, month_number)
 
-    return render(request, 'booking_list_admin.html', {
+    # Get current year
+    now = datetime.now()
+    current_year = now.year
+
+    return render(request, 'admin/booking_list_admin.html', {
         'user': user,
         'year': year,
         'month': month,
         'month_number': month_number,
-        'cal': cal
+        'cal': cal,
+        'current_year': current_year,
     })
