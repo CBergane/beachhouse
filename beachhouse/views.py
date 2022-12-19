@@ -10,6 +10,10 @@ def base(request):
     return render(request, 'base.html', {})
 
 
+def index(request):
+    return render(request, 'index.html', {})
+
+
 def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     user = 'admin'
     month = month.capitalize()
