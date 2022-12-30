@@ -1,11 +1,19 @@
 {% extends "base.html" %}
 
 {% block container %}
-
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2">
 {% for houses in house_list %}
-    {{houses}} </br>
-    {{houses.owner}}</br>
+        <div class="col col-md-6">
+            <div class="card h-100 text-center shadow rounded">
+                <div class="card-body">
+                    <h2>{{houses}} </h2>
+                    </p>{{houses.description}}</p>
+                </div>
+            </div>
+        </div>
 {% endfor %}
-
+    </div>
+</div>
    
 {% endblock %}
