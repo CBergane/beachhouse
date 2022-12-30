@@ -2,6 +2,7 @@ from django.shortcuts import render
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
+from .models import House
 
 # Create your views here.
 
@@ -12,6 +13,11 @@ def base(request):
 
 def index(request):
     return render(request, 'index.html', {})
+
+
+def house_list(request):
+    house_list = House.objects.all()
+    return render(request, 'house_list.html', {'house_list': house_list})
 
 
 def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):

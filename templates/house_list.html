@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+{% for houses in house_list %}
+    {{houses}} </br>
+    {{houses.owner}}</br>
+{% endfor %}
+
+   
+{% endblock %}
