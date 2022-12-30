@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from cloudinary.models import CloudinaryField
 
 
 class Owner(models.Model):
@@ -19,6 +20,7 @@ class House(models.Model):
     beds = models.IntegerField('Number Of Beds', default=0)
     capacity = models.IntegerField('Number Of Guets', default=0)
     description = models.TextField(blank=True)
+    house_image = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.name
