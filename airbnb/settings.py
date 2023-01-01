@@ -52,6 +52,10 @@ INSTALLED_APPS = [
     'beachhouse',
 ]
 
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/index'
+LOGOUT_REDIRECT_URL = '/index'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -80,7 +84,6 @@ TEMPLATES = [
     },
 ]
 
-SITE_ID = 1
 
 WSGI_APPLICATION = 'airbnb.wsgi.application'
 

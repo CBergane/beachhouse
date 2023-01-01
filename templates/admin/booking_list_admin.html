@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 
-{% block container %}
+{% block content %}
     <center>
         <h1>Hello {{user}}, this is the bookings for {{month}} {{year}}:</h1>
         {{cal|safe}}
     </center>
+<h2>This is our uppcoming bookings:</h2>
+        {% for booking in booking_list %}
+        <p>{{booking}}
+        {{booking.checkin|date:"d F y"}} untill {{booking.checkout|date:"d F y"}}<br></p>
+        {% endfor %}
+
+
 {% endblock %}
