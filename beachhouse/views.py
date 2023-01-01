@@ -3,12 +3,12 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from django.http import HttpResponseRedirect
-from .models import House
+from django.views.generic import ListView
+from .models import House, Bookings
 from .forms import BookingForm
 
+
 # Create your views here.
-
-
 def base(request):
     return render(request, 'base.html', {})
 
@@ -22,12 +22,17 @@ def house_list(request):
     return render(request, 'house_list.html', {'house_list': house_list})
 
 
+# add a booking
+
 def add_booking(request):
     submitted = False
+    house = House.objects.all()
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
-            form.save()
+            obj = form.save(commit=False)
+            obj.user = request.user
+            obj.save()
             return HttpResponseRedirect('add_booking?submitted=True')
     else:
         form = BookingForm
@@ -37,7 +42,22 @@ def add_booking(request):
     return render(request, 'add_booking.html', {
         'form': form,
         'submitted': submitted,
+        'house': house,
         })
+
+
+# list your bookings
+class BookingList(ListView):
+    model = Bookings
+    template_name = 'bookings_list.html'
+
+    def get_queryset(self, *args, **kwargs):
+        if self.request.user.is_staff:
+            booking_list = Bookings.objects.all()
+            return booking_list
+        else:
+            booking_list = Bookings.objects.filter(user=self.request.user)
+            return booking_list
 
 
 def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):

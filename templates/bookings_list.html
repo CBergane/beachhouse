@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block container %}
+<h1>Hello {{user}}</h1>
+
+{% for booking in bookings_list  %}
+
+{{booking}}
+{{booking.checkin|date:"d F y"}} untill {{booking.checkout|date:"d F y"}}<br>
+
+{% endfor %}
+   
+{% endblock %}
