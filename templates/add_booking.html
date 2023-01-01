@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<h1>Add a booking</h1>
+
+{% if submitted %}
+
+    <p>Your Booking was submitted</p>
+
+{% else %}
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p}}
+
+        <input type="submit" value="Book" class="btn btn-success">
+    </form>
+{% endif %}
+
+{% endblock %}
