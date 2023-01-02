@@ -16,7 +16,10 @@ class HouseForm(ModelForm):
 class BookingForm(ModelForm):
     class Meta:
         model = Bookings
-        fields = ('checkin', 'checkout',)
+        HOUSE = (
+            (1, 'Royal')
+        )
+        fields = ('house', 'checkin', 'checkout',)
 
         labels = {
             'house': 'Your chosen house',
@@ -24,7 +27,7 @@ class BookingForm(ModelForm):
             'checkout': 'When do you want to check out?',
         }
         widgets = {
-            'house': forms.TextInput(attrs={'class': 'form-control'}),
+            # 'house': forms.TextInput(attrs={'pk'}),
             'checkin': forms.DateInput(
                 attrs={'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)', 'class': 'form-control'}
             ),

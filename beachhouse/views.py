@@ -23,27 +23,26 @@ def house_list(request):
 
 
 # add a booking
-
-def add_booking(request):
+def add_booking(request, house_id):
+    house = House.objects.get(pk=house_id)
     submitted = False
-    house = House.objects.all()
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.user = request.user
+            obj.house = house
             obj.save()
-            return HttpResponseRedirect('add_booking?submitted=True')
+            return HttpResponseRedirect('/bookings_list?submitted=True')
     else:
         form = BookingForm
-        if 'submitted' in request.GET:
-            submitted = True
 
     return render(request, 'add_booking.html', {
         'form': form,
         'submitted': submitted,
         'house': house,
         })
+# add_booking?submitted=True
 
 
 # list your bookings
