@@ -16,13 +16,9 @@ class HouseForm(ModelForm):
 class BookingForm(ModelForm):
     class Meta:
         model = Bookings
-        HOUSE = (
-            (1, 'Royal')
-        )
-        fields = ('house', 'checkin', 'checkout',)
+        fields = ('checkin', 'checkout',)
 
         labels = {
-            'house': 'Your chosen house',
             'checkin': 'When do you want to check in?',
             'checkout': 'When do you want to check out?',
         }

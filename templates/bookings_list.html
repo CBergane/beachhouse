@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Hello {{user}}</h1>
 
-
+{% include 'includes/messages.html' %}
 {% for booking in bookings_list  %}
 
 {{booking}}

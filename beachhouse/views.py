@@ -4,6 +4,7 @@ from calendar import HTMLCalendar
 from datetime import datetime
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView
+from django.contrib import messages
 from .models import House, Bookings
 from .forms import BookingForm
 
@@ -29,13 +30,16 @@ def add_booking(request, house_id):
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
+            messages.success(request, 'Your booking has been added')
             obj = form.save(commit=False)
             obj.user = request.user
             obj.house = house
             obj.save()
-            return HttpResponseRedirect('/bookings_list?submitted=True')
+            return HttpResponseRedirect('/bookings_list')
     else:
         form = BookingForm
+        if 'submitted' in request.GET:
+            submitted = True
 
     return render(request, 'add_booking.html', {
         'form': form,
