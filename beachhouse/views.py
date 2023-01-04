@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, View
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import House, Bookings
 from .forms import BookingForm
 from beachhouse.booking.booking_function import check_availability
@@ -29,14 +30,11 @@ Booking function to check if a house is not booked
 if it is not booked then book it
 '''
 
-
 class AddBooking(View):
     def get(self, request, *args, **kwargs):
         house_name = self.kwargs.get('house_id', None)
-
         form = BookingForm()
         house_list = House.objects.filter(id=house_name)
-
         if len(house_list) > 0:
             house = house_list[0]
             obj = House.objects.get(id=house_name)
@@ -52,7 +50,6 @@ class AddBooking(View):
         house_list = House.objects.filter(id=house_name)
         form = BookingForm(request.POST)
         
-
         if form.is_valid():
             data = form.cleaned_data
             
@@ -60,7 +57,6 @@ class AddBooking(View):
         for house in house_list:
             if check_availability(house, data['checkin'], data['checkout']):
                 available_house.append(house)
-
         if len(available_house) > 0:
             house = available_house[0]
             booking = Bookings.objects.create(
@@ -83,7 +79,7 @@ class AddBooking(View):
                 'house_name': house_name,
                 'obj': house,
                 }
-        )
+        )   
 
 
 # list your bookings

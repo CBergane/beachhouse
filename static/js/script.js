@@ -1,5 +1,6 @@
-document.getElementById('book').addEventListener('mouseover', mouseIn);
+// Function do prevent user from checking out befor checking in
 
+document.getElementById('book').addEventListener('mouseover', mouseIn);
 function mouseIn()
 {
     let Dateone=new Date(document.getElementById('id_checkin').value);
@@ -14,7 +15,7 @@ function mouseIn()
         document.getElementById('display').innerHTML=result;
     }
 };
-
+// Removing the blocked button when mouse pointer moves out
 document.getElementById('book').addEventListener('mouseout', mouseOut);
 
 function mouseOut()
@@ -23,3 +24,11 @@ function mouseOut()
     document.getElementById('book').classList.remove('disabled');
     document.getElementById('display').innerHTML=result;
 }
+
+// a go back function in cancel page
+
+$(document).ready(function() {
+    $('.btn-back').click(function() {
+        window.history.back();
+    })
+})
