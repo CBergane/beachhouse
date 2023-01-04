@@ -4,9 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
-            <h1>Add a booking to {{house}} {{user}}</h1>
 
+            <h1>Add a booking to {{obj}} {{user}}</h1>
 
+                {% include 'includes/messages.html' %}
                 <form action="" method="POST">
                     {% csrf_token %}
 

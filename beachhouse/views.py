@@ -2,11 +2,12 @@ from django.shortcuts import render
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
-from django.http import HttpResponseRedirect
-from django.views.generic import ListView
+from django.http import HttpResponseRedirect, HttpResponse
+from django.views.generic import ListView, View
 from django.contrib import messages
 from .models import House, Bookings
 from .forms import BookingForm
+from beachhouse.booking.booking_function import check_availability
 
 
 # Create your views here.
@@ -23,30 +24,66 @@ def house_list(request):
     return render(request, 'house_list.html', {'house_list': house_list})
 
 
-# add a booking
-def add_booking(request, house_id):
-    house = House.objects.get(pk=house_id)
-    submitted = False
-    if request.method == 'POST':
-        form = BookingForm(request.POST)
-        if form.is_valid():
-            messages.success(request, 'Your booking has been added')
-            obj = form.save(commit=False)
-            obj.user = request.user
-            obj.house = house
-            obj.save()
-            return HttpResponseRedirect('/bookings_list')
-    else:
-        form = BookingForm
-        if 'submitted' in request.GET:
-            submitted = True
+'''
+Booking function to check if a house is not booked
+if it is not booked then book it
+'''
 
-    return render(request, 'add_booking.html', {
-        'form': form,
-        'submitted': submitted,
-        'house': house,
-        })
-# add_booking?submitted=True
+
+class AddBooking(View):
+    def get(self, request, *args, **kwargs):
+        house_name = self.kwargs.get('house_id', None)
+
+        form = BookingForm()
+        house_list = House.objects.filter(id=house_name)
+
+        if len(house_list) > 0:
+            house = house_list[0]
+            obj = House.objects.get(id=house_name)
+            context = {
+                'house_name': house_name,
+                'form': form,
+                'obj': obj,
+            }
+        return render(request, 'add_booking.html', context)
+
+    def post(self, request, *args, **kwargs):
+        house_name = self.kwargs.get('house_id', None)
+        house_list = House.objects.filter(id=house_name)
+        form = BookingForm(request.POST)
+        
+
+        if form.is_valid():
+            data = form.cleaned_data
+            
+        available_house = []
+        for house in house_list:
+            if check_availability(house, data['checkin'], data['checkout']):
+                available_house.append(house)
+
+        if len(available_house) > 0:
+            house = available_house[0]
+            booking = Bookings.objects.create(
+                user=self.request.user,
+                house=house,
+                checkin=data['checkin'],
+                checkout=data['checkout']
+            )
+            booking.save()
+            messages.success(request, 'Your booking has been added')
+            return HttpResponseRedirect('/bookings_list')
+        else:
+            messages.error(request, 'Cant book this dates, try another.')
+            form = BookingForm()
+        return render(
+            request=request,
+            template_name='add_booking.html',
+            context={
+                'form': form,
+                'house_name': house_name,
+                'obj': house,
+                }
+        )
 
 
 # list your bookings

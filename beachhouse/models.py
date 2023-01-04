@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from cloudinary.models import CloudinaryField
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 
 class Owner(models.Model):
@@ -35,6 +37,24 @@ class Bookings(models.Model):
     checkin = models.DateTimeField('Check In')
     checkout = models.DateTimeField('Check Out')
 
+    """
+    Function to validate date so that
+    checkin and checkout date is not in the past.
+    """
+    def check_in_validate(checkin):
+        if checkin < timezone.now():
+            raise ValidationError('You cant checkin in the past')
+    checkin = models.DateTimeField(null=True, blank=True, validators=[check_in_validate])
+
+    def check_out_validate(checkout):
+        if checkout < timezone.now():
+            raise ValidationError('You cant checkout in the past')
+    checkout = models.DateTimeField(null=True, blank=True, validators=[check_out_validate])
+
     def __str__(self):
+        """
+        Function to return object model
+        items as string.
+        """
         return f'{self.user} has booked {self.house} '
-        f'from {self.check_in} untill {self.check_out}'
+        f'from {self.checkin} untill {self.checkout}'

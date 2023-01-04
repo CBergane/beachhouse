@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cloudinary',
     # my apps
     'beachhouse',
+    'beachhouse.booking',
 ]
 
 SITE_ID = 1

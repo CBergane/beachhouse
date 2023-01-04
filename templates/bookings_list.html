@@ -1,14 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hello {{user}}</h1>
+
+<div class="container"></div>
+<h1 class="text-center">Hello {{user}}</h1>
 
 {% include 'includes/messages.html' %}
 {% for booking in bookings_list  %}
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="ms-2 me-auto">
+                    <p>You have booked <strong>{{booking.house}}</strong>.</p>
+                    <p><strong>From</strong> {{booking.checkin|date:"F d Y"}} <strong>untill</strong> {{booking.checkout|date:"F d y"}}</p>
+                    </div>
+                </li>
+            </ul>
+            <div class="col-md-4">
 
-{{booking}}
-{{booking.checkin|date:"d F y"}} untill {{booking.checkout|date:"d F y"}}<br>
-
+            </div>
+        </div>
+    </div>
 {% endfor %}
-   
+</div>
 {% endblock %}
