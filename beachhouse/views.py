@@ -5,7 +5,6 @@ from datetime import datetime
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, View
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from .models import House, Bookings
 from .forms import BookingForm
 from beachhouse.booking.booking_function import check_availability
@@ -95,6 +94,12 @@ class BookingList(ListView):
             booking_list = Bookings.objects.filter(user=self.request.user)
             return booking_list
 
+def search_house(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        return render(request, 'search_house.html', {'searched': searched})
+    else:
+        return render(request, 'search_house.html', {})
 
 def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     month = month.capitalize()

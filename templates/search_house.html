@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if searched %}
+        <h1>Search results for {{searched}}:</h1>
+    {% else %}
+        <h1>You forgot to add a house to search for...</h1>
+    {% endif %}
+{% endblock %}
