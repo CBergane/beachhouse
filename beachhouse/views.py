@@ -102,6 +102,14 @@ def search_house(request):
     else:
         return render(request, 'search_house.html', {})
 
+def bookings_update(request, bookings_id):
+    booking = Bookings.objects.get(pk=bookings_id)
+    form = BookingForm(request.POST or None, instance=booking)
+    if form.is_valid():
+        form.save()
+        return redirect('BookingList')
+    return render(request, 'bookings_update.html', {'booking': booking, 'form': form})
+
 def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     month = month.capitalize()
     # converting month to numbers
