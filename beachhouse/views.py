@@ -97,7 +97,8 @@ class BookingList(ListView):
 def search_house(request):
     if request.method == 'POST':
         searched = request.POST['searched']
-        return render(request, 'search_house.html', {'searched': searched})
+        house = House.objects.filter(name__contains=searched)
+        return render(request, 'search_house.html', {'searched': searched, 'house': house, })
     else:
         return render(request, 'search_house.html', {})
 
