@@ -134,6 +134,12 @@ def house_update(request, house_id):
         return redirect('houselist')
     return render(request, 'house_update.html', {'house': house, 'form': form})
 
+# Delete a house
+def house_delete(request, house_id):
+    house = House.objects.get(pk=house_id)
+    house.delete()
+    return redirect('house-list')
+
 def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     month = month.capitalize()
     # converting month to numbers
