@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, View
 from django.contrib import messages
 from .models import House, Bookings
-from .forms import BookingForm
+from .forms import BookingForm, HouseForm
 from beachhouse.booking.booking_function import check_availability
 
 
@@ -109,6 +109,20 @@ def bookings_update(request, bookings_id):
         form.save()
         return redirect('BookingList')
     return render(request, 'bookings_update.html', {'booking': booking, 'form': form})
+
+def add_house(request):
+    submitted = False
+    if request.method == 'POST':
+        form = HouseForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('add_house?submitted=True')
+    else:
+        form = HouseForm
+        if submitted in request.GET:
+            submitted = True
+    
+    return render(request, 'add_house.html', {'form': form, 'submitted': submitted})
 
 def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     month = month.capitalize()

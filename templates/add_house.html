@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mt-3 offset-md-2">
+
+                <h1>Add a house {{user}}</h1>
+
+                    {% include 'includes/messages.html' %}
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        {{ form.as_p}}
+                        <input type="submit" id="book" value="Add House" class="btn btn-success">
+                        <span class="btn btn-back btn-secondary">Go Back</span>
+                        <span id="display"></span>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
