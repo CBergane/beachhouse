@@ -9,6 +9,7 @@ urlpatterns = [
     path('house_list', views.house_list, name='house-list'),
     path('add_booking/<house_id>', login_required(AddBooking.as_view()), name='add-booking'),
     path('bookings_update/<bookings_id>', login_required(views.bookings_update), name='bookings-update'),
+    path('bookings_delete/<bookings_id>', login_required(views.bookings_delete), name='bookings-delete'),
     path('bookings_list', login_required(BookingList.as_view()), name='BookingList'),
     path('search_house', views.search_house, name='search-house'),
     path('add_house', login_required(views.add_house), name='add-house'),

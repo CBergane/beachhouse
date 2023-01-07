@@ -18,7 +18,7 @@ def base(request):
 def index(request):
     return render(request, 'index.html', {})
 
-
+# List all the houses
 def house_list(request):
     house_list = House.objects.all()
     return render(request, 'house_list.html', {'house_list': house_list})
@@ -94,6 +94,7 @@ class BookingList(ListView):
             booking_list = Bookings.objects.filter(user=self.request.user)
             return booking_list
 
+# Search house on name
 def search_house(request):
     if request.method == 'POST':
         searched = request.POST['searched']
@@ -102,6 +103,7 @@ def search_house(request):
     else:
         return render(request, 'search_house.html', {})
 
+# Uppdate a booking
 def bookings_update(request, bookings_id):
     booking = Bookings.objects.get(pk=bookings_id)
     form = BookingForm(request.POST or None, instance=booking)
@@ -110,6 +112,13 @@ def bookings_update(request, bookings_id):
         return redirect('BookingList')
     return render(request, 'bookings_update.html', {'booking': booking, 'form': form})
 
+# Delete a booking
+def bookings_delete(request, bookings_id):
+    booking = Bookings.objects.get(pk=bookings_id)
+    booking.delete()
+    return redirect('BookingList')
+
+# Add a house if you have staff privilages
 def add_house(request):
     submitted = False
     if request.method == 'POST':
