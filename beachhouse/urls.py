@@ -11,7 +11,8 @@ urlpatterns = [
     path('bookings_update/<bookings_id>', login_required(views.bookings_update), name='bookings-update'),
     path('bookings_list', login_required(BookingList.as_view()), name='BookingList'),
     path('search_house', views.search_house, name='search-house'),
-    path('add_house', views.add_house, name='add-house'),
+    path('add_house', login_required(views.add_house), name='add-house'),
+    path('house_update/<house_id>', login_required(views.house_update), name='house-update'),
     path('bookinglistadmin', login_required(views.booking_list_admin), name='bookinglistadmin'),
     path('<int:year>/<str:month>', views.booking_list_admin, name='bookinglistadmin'),
 ]

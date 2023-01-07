@@ -115,6 +115,7 @@ def add_house(request):
     if request.method == 'POST':
         form = HouseForm(request.POST, request.FILES)
         if form.is_valid():
+            messages.success(request, 'Your house has been added')
             form.save()
             return HttpResponseRedirect('add_house?submitted=True')
     else:
@@ -123,6 +124,15 @@ def add_house(request):
             submitted = True
     
     return render(request, 'add_house.html', {'form': form, 'submitted': submitted})
+
+def house_update(request, house_id):
+    house = House.objects.get(pk=house_id)
+    form = HouseForm(request.POST or None, instance=house)
+    if form.is_valid():
+        messages.success(request, 'Your house has been updated.')
+        form.save()
+        return redirect('houselist')
+    return render(request, 'house_update.html', {'house': house, 'form': form})
 
 def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     month = month.capitalize()
