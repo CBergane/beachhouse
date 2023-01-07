@@ -88,7 +88,7 @@ class BookingList(ListView):
 
     def get_queryset(self, *args, **kwargs):
         if self.request.user.is_staff:
-            booking_list = Bookings.objects.all()
+            booking_list = Bookings.objects.all().order_by('checkin')
             return booking_list
         else:
             booking_list = Bookings.objects.filter(user=self.request.user)
@@ -134,6 +134,7 @@ def add_house(request):
     
     return render(request, 'add_house.html', {'form': form, 'submitted': submitted})
 
+# Update a house
 def house_update(request, house_id):
     house = House.objects.get(pk=house_id)
     form = HouseForm(request.POST or None, instance=house)
