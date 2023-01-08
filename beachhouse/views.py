@@ -48,14 +48,16 @@ class AddBooking(View):
         house_name = self.kwargs.get('house_id', None)
         house_list = House.objects.filter(id=house_name)
         form = BookingForm(request.POST)
+        available_house = []
+        house = ''
         
         if form.is_valid():
             data = form.cleaned_data
-            
-        available_house = []
-        for house in house_list:
-            if check_availability(house, data['checkin'], data['checkout']):
-                available_house.append(house)
+            for house in house_list:
+                if check_availability(house, data['checkin'], data['checkout']):
+                    available_house.append(house)
+                
+        
         if len(available_house) > 0:
             house = available_house[0]
             booking = Bookings.objects.create(

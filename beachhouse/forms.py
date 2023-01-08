@@ -1,6 +1,9 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Bookings, House
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+from django.core import validators
 
 # form for adding a house
 
@@ -31,20 +34,21 @@ class HouseForm(ModelForm):
 # form for bookings
 
 
-class BookingForm(ModelForm):
+class BookingForm(forms.ModelForm):
     class Meta:
         model = Bookings
         fields = ('checkin', 'checkout',)
+
 
         labels = {
             'checkin': 'When do you want to check in?',
             'checkout': 'When do you want to check out?',
         }
         widgets = {
-            'checkin': forms.DateInput(
-                attrs={'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)', 'class': 'form-control'}
+            'checkin': forms.DateTimeInput(
+                attrs={'type': 'date', 'class': 'form-control'}
             ),
-            'checkout': forms.DateInput(
-                attrs={'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)', 'class': 'form-control'}
+            'checkout': forms.DateTimeInput(
+                attrs={'type': 'date', 'class': 'form-control'}
             ),
         }
