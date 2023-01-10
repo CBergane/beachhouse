@@ -24,12 +24,13 @@ def house_list(request):
     return render(request, 'house_list.html', {'house_list': house_list})
 
 
-'''
-Booking function to check if a house is not booked
-if it is not booked then book it
-'''
+
 
 class AddBooking(View):
+    '''
+    Booking function to check if a house is not booked
+    if it is not booked then book it
+    '''    
     def get(self, request, *args, **kwargs):
         house_name = self.kwargs.get('house_id', None)
         form = BookingForm()
