@@ -9,6 +9,11 @@ body {
     min-height: 100%;
 }
 
+.square-box{
+    max-width: 600px;
+    min-height: 600px;
+}
+
 /* Colors */
 body {
     background-color: #E6E9EE;
@@ -21,13 +26,12 @@ body {
 }
 
 .footer {
-    /* position: fixed; */
     height: 85px;
     padding-top: 0;
 }
 
+/* Social media  */
 .icons{
-    /* display: inline-flex; */
     justify-content: center;
     display: flex;
     
