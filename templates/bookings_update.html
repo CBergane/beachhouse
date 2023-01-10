@@ -1,12 +1,18 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <h1>Uppdate your booking for {{booking.house}}</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 32rem;">
+            <div class="card-body">
+                <h1 class="card-title">Uppdate your booking for {{booking.house}}</h1>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
 
-        <input type="submit" value="Update" class="btn btn-outline-success btn-sm">
-    </form>
-    
+                    <input type="submit" value="Update" class="btn btn-outline-success btn-sm">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

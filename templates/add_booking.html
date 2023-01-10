@@ -12,6 +12,8 @@
                     {% csrf_token %}
 
                     {{ form.as_p}}
+                    <span id="price">Price per night: {{ obj.price }}</span>
+                    <span id="total"></span>
                     <input type="submit" id="book" value="Book" class="btn btn-outline-success btn-sm">
                     <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>
                     <span id="display"></span>

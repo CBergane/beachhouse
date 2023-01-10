@@ -3,20 +3,25 @@
 {% block content %}
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 mt-3 offset-md-2">
+        <div class="row align-items-center">
+            <div class="col-md-8 offset-md-1">
 
                 <h1>Add a house {{user}}</h1>
 
                     {% include 'includes/messages.html' %}
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
+                    <div class="card">
+                        <div class="card-body" style="max-width: 50rem;">
 
-                        {{ form.as_p}}
-                        <input type="submit" id="book" value="Add House" class="btn btn-outline-success">
-                        <span class="btn btn-back btn-outline-secondary">Go Back</span>
-                        <span id="display"></span>
-                    </form>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+
+                                    {{ form.as_p}}
+                                    <input type="submit" id="book" value="Add House" class="btn btn-outline-success">
+                                    <span class="btn btn-back btn-outline-secondary">Go Back</span>
+                                    <span id="display"></span>
+                                </form>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
