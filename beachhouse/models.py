@@ -23,7 +23,8 @@ class House(models.Model):
     adress = models.CharField('House Adress', max_length=30)
     owner = models.ForeignKey(Owner, null=True, on_delete=models.CASCADE)
     beds = models.IntegerField('Number Of Beds', default=0)
-    capacity = models.IntegerField('Number Of Guets', default=0)
+    capacity = models.IntegerField('Number Of Guests', default=0)
+    price = models.IntegerField('Price Per Night', default=0)
     description = models.TextField(blank=True)
     house_image = CloudinaryField('image', default='placeholder')
 
