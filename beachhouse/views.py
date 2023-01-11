@@ -10,7 +10,6 @@ from .forms import BookingForm, HouseForm
 from beachhouse.booking.booking_function import check_availability
 
 
-# Create your views here.
 def base(request):
     return render(request, 'base.html', {})
 
@@ -18,19 +17,20 @@ def base(request):
 def index(request):
     return render(request, 'index.html', {})
 
-# List all the houses
+
 def house_list(request):
+    '''
+    List all houses in the database
+    '''
     house_list = House.objects.all()
     return render(request, 'house_list.html', {'house_list': house_list})
-
-
 
 
 class AddBooking(View):
     '''
     Booking function to check if a house is not booked
     if it is not booked then book it
-    '''    
+    '''
     def get(self, request, *args, **kwargs):
         house_name = self.kwargs.get('house_id', None)
         form = BookingForm()
@@ -51,14 +51,15 @@ class AddBooking(View):
         form = BookingForm(request.POST)
         available_house = []
         house = ''
-        
+
         if form.is_valid():
             data = form.cleaned_data
             for house in house_list:
-                if check_availability(house, data['checkin'], data['checkout']):
+                if check_availability(
+                    house, data['checkin'], data['checkout']
+                        ):
                     available_house.append(house)
-                
-        
+
         if len(available_house) > 0:
             house = available_house[0]
             booking = Bookings.objects.create(
@@ -81,11 +82,13 @@ class AddBooking(View):
                 'house_name': house_name,
                 'obj': house,
                 }
-        )   
+        )
 
 
-# list your bookings
 class BookingList(ListView):
+    '''
+    List all bookings
+    '''
     model = Bookings
     template_name = 'bookings_list.html'
 
@@ -97,14 +100,22 @@ class BookingList(ListView):
             booking_list = Bookings.objects.filter(user=self.request.user)
             return booking_list
 
-# Search house on name
+
 def search_house(request):
+    '''
+    Preforms a search of the houses in the database
+    '''
     if request.method == 'POST':
         searched = request.POST['searched']
         house = House.objects.filter(name__contains=searched)
-        return render(request, 'search_house.html', {'searched': searched, 'house': house, })
+        return render(request, 'search_house.html', {
+            'searched': searched,
+            'house': house,
+            }
+            )
     else:
         return render(request, 'search_house.html', {})
+
 
 # Uppdate a booking
 def bookings_update(request, bookings_id):
@@ -113,13 +124,18 @@ def bookings_update(request, bookings_id):
     if form.is_valid():
         form.save()
         return redirect('BookingList')
-    return render(request, 'bookings_update.html', {'booking': booking, 'form': form})
+    return render(request, 'bookings_update.html', {
+        'booking': booking,
+        'form': form,
+        })
+
 
 # Delete a booking
 def bookings_delete(request, bookings_id):
     booking = Bookings.objects.get(pk=bookings_id)
     booking.delete()
     return redirect('BookingList')
+
 
 # Add a house if you have staff privilages
 def add_house(request):
@@ -134,8 +150,12 @@ def add_house(request):
         form = HouseForm
         if submitted in request.GET:
             submitted = True
-    
-    return render(request, 'add_house.html', {'form': form, 'submitted': submitted})
+
+    return render(request, 'add_house.html', {
+        'form': form,
+        'submitted': submitted,
+        })
+
 
 # Update a house
 def house_update(request, house_id):
@@ -147,13 +167,18 @@ def house_update(request, house_id):
         return redirect('houselist')
     return render(request, 'house_update.html', {'house': house, 'form': form})
 
-# Delete a house
+
 def house_delete(request, house_id):
+    # Delete a house
     house = House.objects.get(pk=house_id)
     house.delete()
     return redirect('house-list')
 
-def booking_list_admin(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
+
+def booking_list_admin(
+    request, year=datetime.now().year,
+    month=datetime.now().strftime('%B')
+        ):
     month = month.capitalize()
     # converting month to numbers
     month_number = list(calendar.month_name).index(month)

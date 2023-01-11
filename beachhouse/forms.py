@@ -11,7 +11,16 @@ from django.core import validators
 class HouseForm(ModelForm):
     class Meta:
         model = House
-        fields = ('name', 'adress', 'owner', 'beds', 'capacity', 'price', 'description', 'house_image',)
+        fields = (
+            'name',
+            'adress',
+            'owner',
+            'beds',
+            'capacity',
+            'price',
+            'description',
+            'house_image',
+            )
         labels = {
             'name': '',
             'adress': '',
@@ -23,14 +32,44 @@ class HouseForm(ModelForm):
             'house_image': 'Add a picture of your house',
         }
         widgets = {
-            'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'House Name'}),
-            'adress': forms.TextInput(attrs={'class':'form-control', 'placeholder':'House Adress'}),
-            'owner': forms.Select(attrs={'class':'form-select', 'placeholder':'Owner of the house'}),
-            'beds': forms.NumberInput(attrs={'class':'form-range', 'id':'beds', 'type':'range', 'min':'0', 'max':'10', 'placeholder':'Number of guests'}),
-            'capacity': forms.NumberInput(attrs={'class':'form-range', 'id': 'capacity', 'type':'range', 'min':'0', 'max':'10', 'placeholder':'Number of guests'}),
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'House Name'
+                }),
+            'adress': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'House Adress',
+                }),
+            'owner': forms.Select(attrs={
+                'class': 'form-select',
+                'placeholder': 'Owner of the house',
+                }),
+            'beds': forms.NumberInput(attrs={
+                'class': 'form-range',
+                'id': 'beds',
+                'type': 'range',
+                'min': '0',
+                'max': '10',
+                'placeholder': 'Number of guests',
+                }),
+            'capacity': forms.NumberInput(attrs={
+                'class': 'form-range',
+                'id': 'capacity',
+                'type': 'range',
+                'min': '0',
+                'max': '10',
+                'placeholder': 'Number of guests',
+                }),
             'price': forms.NumberInput,
-            'description': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Describe the house'}),
-            'house_image': forms.FileInput(attrs={'class':'form-control','type':'file', 'placeholder':'House Name'}),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Describe the house',
+                }),
+            'house_image': forms.FileInput(attrs={
+                'class': 'form-control',
+                'type': 'file',
+                'placeholder': 'House Name',
+                }),
         }
 
 # form for bookings
@@ -40,7 +79,6 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Bookings
         fields = ('checkin', 'checkout',)
-
 
         labels = {
             'checkin': 'When do you want to check in?',

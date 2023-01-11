@@ -38,9 +38,14 @@ class Bookings(models.Model):
         blank=True, null=True, on_delete=models.CASCADE)
     house = models.ForeignKey(
         House, blank=True, null=True, on_delete=models.CASCADE)
-    checkin = models.DateTimeField(validators=[MinValueValidator(datetime.datetime.now().replace(tzinfo=pytz.UTC))])
-    checkout = models.DateTimeField(validators=[MinValueValidator(datetime.datetime.now().replace(tzinfo=pytz.UTC))])
-
+    checkin = models.DateTimeField(
+        validators=[MinValueValidator(
+            datetime.datetime.now().replace(tzinfo=pytz.UTC)
+            )])
+    checkout = models.DateTimeField(
+        validators=[MinValueValidator(
+            datetime.datetime.now().replace(tzinfo=pytz.UTC)
+            )])
 
     def __str__(self):
         """
