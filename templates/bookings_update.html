@@ -6,7 +6,11 @@
             <div class="card-body">
                 <h1 class="card-title">Uppdate your booking for {{booking.house}}</h1>
                 <form action="" method="post">
+                    <p>You have booked:</p>
+                    <p>{{booking.checkin|date:"F d Y"}}</p>
+                    <p>{{booking.checkout|date:"F d Y"}}</p>
                     {% csrf_token %}
+
                     {{ form.as_p }}
 
                     <input type="submit" value="Update" class="btn btn-outline-success btn-sm">

@@ -1,22 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
     {% if searched %}
+    
         <h1>Search results for {{searched}}:</h1>
         <br/>
+        
         {% for houses in house %}
-        <div class="row">
-            <div class="col-md-4">
+        
+        <div class="row align-items-center">
+            <div class="col-md-6 ">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <div class="ms-2 me-auto">
-                            <h1>Search results for {{houses}}:</h1>
+                            <h3>Search results for {{houses}}:</h3>
                             <p>Number of beds {{houses.beds}}</p>
-                            <p>Can hold {{houses.capacity}}</p>
+                            <p>Can hold {{houses.capacity}} guests</p>
                             <p>The adress: {{houses.adress}}</p>
-                            <p>{{houses.description}}</p>
                             <a href="{% url 'add-booking' houses.id %}" class="btn btn-outline-success">Book This House</a>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -24,5 +25,7 @@
         {% endfor %}
     {% else %}
         <h1>You forgot to add a house to search for...</h1>
+    
     {% endif %}
+</div>
 {% endblock %}

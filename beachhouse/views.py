@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
+from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, View
 from django.contrib import messages
@@ -107,7 +108,9 @@ def search_house(request):
     '''
     if request.method == 'POST':
         searched = request.POST['searched']
-        house = House.objects.filter(name__contains=searched)
+        house = House.objects.filter(
+            Q(name__icontains=searched) | Q(adress__icontains=searched)
+            )
         return render(request, 'search_house.html', {
             'searched': searched,
             'house': house,
@@ -117,8 +120,10 @@ def search_house(request):
         return render(request, 'search_house.html', {})
 
 
-# Uppdate a booking
 def bookings_update(request, bookings_id):
+    '''
+    Uppdate a existing booking
+    '''
     booking = Bookings.objects.get(pk=bookings_id)
     form = BookingForm(request.POST or None, instance=booking)
     if form.is_valid():
@@ -130,15 +135,19 @@ def bookings_update(request, bookings_id):
         })
 
 
-# Delete a booking
 def bookings_delete(request, bookings_id):
+    '''
+    Delete a booking
+    '''
     booking = Bookings.objects.get(pk=bookings_id)
     booking.delete()
     return redirect('BookingList')
 
 
-# Add a house if you have staff privilages
 def add_house(request):
+    '''
+    If user has staff acces they can add houses
+    '''
     submitted = False
     if request.method == 'POST':
         form = HouseForm(request.POST, request.FILES)
@@ -157,8 +166,10 @@ def add_house(request):
         })
 
 
-# Update a house
 def house_update(request, house_id):
+    '''
+    Uppdate a house if you have acces
+    '''
     house = House.objects.get(pk=house_id)
     form = HouseForm(request.POST or None, instance=house)
     if form.is_valid():
@@ -169,7 +180,9 @@ def house_update(request, house_id):
 
 
 def house_delete(request, house_id):
-    # Delete a house
+    '''
+    Delete a house from the database
+    '''
     house = House.objects.get(pk=house_id)
     house.delete()
     return redirect('house-list')

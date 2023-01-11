@@ -5,10 +5,11 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 from django.core import validators
 
-# form for adding a house
-
 
 class HouseForm(ModelForm):
+    '''
+    Form for adding a house
+    '''
     class Meta:
         model = House
         fields = (
@@ -72,10 +73,11 @@ class HouseForm(ModelForm):
                 }),
         }
 
-# form for bookings
-
 
 class BookingForm(forms.ModelForm):
+    '''
+    Form for making a booking
+    '''
     class Meta:
         model = Bookings
         fields = ('checkin', 'checkout',)
