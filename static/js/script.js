@@ -1,31 +1,32 @@
-// Function do prevent user from checking out befor checking in
-    
-document.getElementById('book').addEventListener('mouseover', mouseIn);
-    function mouseIn()
-{
-    let Dateone=new Date(document.getElementById('id_checkin').value);
-    let Datetwo=new Date(document.getElementById('id_checkout').value);
-    let result;
-
-    if(Dateone>Datetwo)
-    {
-        result='<p>You cant check out before you check in.</p>';
-        document.getElementById('display').style.color='red';
-        document.getElementById('book').classList.add('disabled');
-        document.getElementById('display').innerHTML=result;
+ // Get the check-in date input element and the book button
+const checkInDate = document.getElementById("id_checkin");
+const bookButton = document.getElementById("book");
+if(checkInDate && bookButton){
+    checkInDate.addEventListener("change", checkDate);
+    function checkDate() {
+    // Add an event listener to the check-in date input that runs the checkDate function every time the input's value changes
+    checkInDate.addEventListener("change", checkDate);
+    // Define the checkDate function
+    function checkDate() {
+    // Get the current date
+    const currentDate = new Date();
+    // Get the check-in date from the input
+    const checkIn = new Date(checkInDate.value);
+    // Compare the check-in date to the current date
+    if (checkIn < currentDate) {
+        // If the check-in date is in the past, disable the book button
+        bookButton.disabled = true;
+        bookButton.value = "Check-in date is in the past, please correct";
+    } else {
+        // If the check-in date is in the future, enable the book button
+        bookButton.disabled = false;
+        bookButton.value = "Book"
     }
-};
-// Removing the blocked button when mouse pointer moves out
-document.getElementById('book').addEventListener('mouseout', mouseOut);
-
-function mouseOut()
-{   
-    result=''
-    document.getElementById('book').classList.remove('disabled');
-    document.getElementById('display').innerHTML=result;
+    }
+}
 }
 
-// a go back function in cancel page
+// a go back one page function
 
 $(document).ready(function() {
     $('.btn-back').click(function() {
@@ -45,5 +46,3 @@ function calculateTotalPrice() {
 
 document.getElementById("id_checkin").addEventListener("change", calculateTotalPrice);
 document.getElementById("id_checkout").addEventListener("change", calculateTotalPrice);
-
-console.log('hello')
