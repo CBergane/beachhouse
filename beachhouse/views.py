@@ -125,9 +125,24 @@ def bookings_update(request, bookings_id):
     Uppdate a existing booking
     '''
     booking = Bookings.objects.get(pk=bookings_id)
+
     form = BookingForm(request.POST or None, instance=booking)
     if form.is_valid():
-        form.save()
+        checkin = form.cleaned_data['checkin']
+        checkout = form.cleaned_data['checkout']
+        conflicting_bookings = Bookings.objects.filter(
+            checkin__lte=checkout,
+            checkout__gte=checkin).exclude(pk=bookings_id)
+        if conflicting_bookings.exists():
+            # If any conflicting bookings are found,
+            # return an error message to the user
+            messages.error(request, 'A booking exist already, try another one.')
+            return render(request, 'bookings_update.html', {
+                'form': form,
+                'booking': booking,
+                })
+        else:
+            form.save()
         return redirect('BookingList')
     return render(request, 'bookings_update.html', {
         'booking': booking,
