@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import calendar
 from calendar import HTMLCalendar
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, View
@@ -88,18 +88,28 @@ class AddBooking(View):
 
 class BookingList(ListView):
     '''
-    List all bookings
+    List all bookings with total cost
     '''
     model = Bookings
     template_name = 'bookings_list.html'
 
-    def get_queryset(self, *args, **kwargs):
-        if self.request.user.is_staff:
-            booking_list = Bookings.objects.all().order_by('checkin')
-            return booking_list
-        else:
-            booking_list = Bookings.objects.filter(user=self.request.user)
-            return booking_list
+    def get_queryset(self):
+        # Retrieve the existing bookings from the database
+        bookings = super().get_queryset()
+        for booking in bookings:
+            checkin = booking.checkin
+            checkout = booking.checkout
+            house = booking.house
+            rate = house.price
+
+            # Calculate the number of days between
+            # the check-in and check-out dates
+            delta = checkout - checkin
+            days = delta.days
+
+            # Use the number of days to calculate the price of the booking
+            booking.price = days * rate
+        return bookings
 
 
 def search_house(request):
@@ -125,7 +135,6 @@ def bookings_update(request, bookings_id):
     Uppdate a existing booking
     '''
     booking = Bookings.objects.get(pk=bookings_id)
-
     form = BookingForm(request.POST or None, instance=booking)
     if form.is_valid():
         checkin = form.cleaned_data['checkin']
@@ -136,7 +145,9 @@ def bookings_update(request, bookings_id):
         if conflicting_bookings.exists():
             # If any conflicting bookings are found,
             # return an error message to the user
-            messages.error(request, 'A booking exist already, try another one.')
+            messages.error(
+                request, 'A booking exist already, try another one.'
+                )
             return render(request, 'bookings_update.html', {
                 'form': form,
                 'booking': booking,
