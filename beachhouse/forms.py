@@ -88,9 +88,15 @@ class BookingForm(forms.ModelForm):
         }
         widgets = {
             'checkin': forms.DateTimeInput(
-                attrs={'type': 'date', 'class': 'form-control'}
+                attrs={
+                    'type': 'date',
+                    'class': 'form-control',
+                    }
             ),
             'checkout': forms.DateTimeInput(
-                attrs={'type': 'date', 'class': 'form-control'}
+                attrs={
+                    'type': 'date',
+                    'class': 'form-control',
+                    }
             ),
         }

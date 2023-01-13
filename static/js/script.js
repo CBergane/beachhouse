@@ -1,7 +1,7 @@
 // Function do prevent user from checking out befor checking in
-
+    
 document.getElementById('book').addEventListener('mouseover', mouseIn);
-function mouseIn()
+    function mouseIn()
 {
     let Dateone=new Date(document.getElementById('id_checkin').value);
     let Datetwo=new Date(document.getElementById('id_checkout').value);
@@ -32,3 +32,18 @@ $(document).ready(function() {
         window.history.back();
     })
 })
+
+function calculateTotalPrice() {
+    var checkInDate = new Date(document.getElementById("id_checkin").value);
+    var checkOutDate = new Date(document.getElementById("id_checkout").value);
+    var housePrice = document.getElementById("price").innerHTML;
+    var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+    var diffDays = Math.round(Math.abs((checkOutDate.getTime() - checkInDate.getTime())/(oneDay)));
+    var totalCost = diffDays * housePrice;
+    document.getElementById("total_cost").innerHTML = totalCost;
+}
+
+document.getElementById("id_checkin").addEventListener("change", calculateTotalPrice);
+document.getElementById("id_checkout").addEventListener("change", calculateTotalPrice);
+
+console.log('hello')

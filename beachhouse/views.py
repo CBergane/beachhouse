@@ -3,9 +3,10 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime, timedelta
 from django.db.models import Q
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.views.generic import ListView, View
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 from .models import House, Bookings
 from .forms import BookingForm, HouseForm
 from beachhouse.booking.booking_function import check_availability
@@ -84,6 +85,18 @@ class AddBooking(View):
                 'obj': house,
                 }
         )
+
+        @csrf_exempt
+        def calculate_cost(self, request):
+            checkin = request.POST.get('checkin')
+            checkout = request.POST.get('checkout')
+            house_id = request.POST.get('house_id')
+            house = House.objects.get(pk=house_id)
+            delta = datetime.strptime(
+                checkout, '%Y-%m-%d') - datetime.strptime(checkin, '%Y-%m-%d')
+            days = delta.days
+            cost = days * house.rate
+        return JsonResponse({'total_cost': cost})
 
 
 class BookingList(ListView):
