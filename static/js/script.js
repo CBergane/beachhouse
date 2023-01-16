@@ -30,6 +30,40 @@ if(checkInDate && checkOutDate && bookButton){
     }
 }
 
+// A funcktion to make sure the user wont be able to change to check in and out in the past
+if(document.getElementById('update_booking')) {
+    const checkInDate = document.getElementById("id_checkin");
+    const checkOutDate = document.getElementById("id_checkout");
+    const bookButton = document.getElementById("update");
+    if(checkInDate && checkOutDate && bookButton){
+        checkInDate.addEventListener("change", checkDates);
+        checkOutDate.addEventListener("change", checkDates);
+        checkDates();
+        function checkDates() {
+            // Get the current date
+            const currentDate = new Date();
+            // Get the check-in date from the input
+            const checkIn = new Date(checkInDate.value);
+            // Get the check-out date from the input
+            const checkOut = new Date(checkOutDate.value);
+            // Compare the check-in date to the current date
+            if (checkIn < currentDate) {
+                // If the check-in date is in the past, disable the book button
+                bookButton.disabled = true;
+                bookButton.value = "Check-in date is in the past, please correct";
+            } else if (checkOut < currentDate) {
+                // If the check-out date is in the past, disable the book button
+                bookButton.disabled = true;
+                bookButton.value = "Check-out date is in the past, please correct";
+            } else {
+                // If the check-in and check-out dates are in the future, enable the book button
+                bookButton.disabled = false;
+                bookButton.value = "Update"
+            }
+        }
+    }
+}
+
 // a go back one page function
 
 $(document).ready(function() {
@@ -56,6 +90,8 @@ if(price) {
     document.getElementById("id_checkout").addEventListener("change", calculateTotalPrice);
 }
 
+
+// add a span to the ranges so you can see what value they have
 if(document.getElementById('add_house')) {
     const rangeInputBeds = document.getElementById("beds");
     const valueDisplayBeds = document.createElement("bed");
@@ -79,4 +115,3 @@ if(document.getElementById('add_house')) {
         valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
 });
 }
-

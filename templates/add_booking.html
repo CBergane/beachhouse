@@ -2,27 +2,20 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="d-flex justify-content-center">
-            <div class="row">
-            <div class="card shadow" style="width: 28rem;">
-                <div class="card-body">
-
-                    <h1>Add a booking to {{obj}} {{user}}</h1>
-
-                        {% include 'includes/messages.html' %}
-                        <form action="" method="POST">
-                            {% csrf_token %}
-
-                            {{ form.as_p}}
-                            <input type="hidden" id="house_id" value="{{ house.id }}">
-                            <p class="card-text">Price per night: <span id="price">{{ obj.price }}</span></p>
-                            <p class="card-text">Total cost: <span id="total_cost"></span></p>
-                            <input type="submit" id="book" value="Book" class="btn btn-outline-success btn-sm">
-                            <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>
-                        </form>
-                </div>
-            </div>
+    <div class="row justify-content-center">
+        <div class="card shadow" style="width: 28rem;">
+            <div class="card-body">
+                <h1>Add a booking to {{obj}} {{user}}</h1>
+                    {% include 'includes/messages.html' %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p}}
+                        <input type="hidden" id="house_id" value="{{ house.id }}">
+                        <p class="card-text">Price per night: <span id="price">{{ obj.price }}</span></p>
+                        <p class="card-text">Total cost: <span id="total_cost"></span></p>
+                        <input type="submit" id="book" value="Book" class="btn btn-outline-success btn-sm">
+                        <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>
+                    </form>
             </div>
         </div>
     </div>
