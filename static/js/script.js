@@ -56,24 +56,27 @@ if(price) {
     document.getElementById("id_checkout").addEventListener("change", calculateTotalPrice);
 }
 
-const rangeInputBeds = document.getElementById("beds");
-const valueDisplayBeds = document.createElement("bed");
+if(document.getElementById('add_house')) {
+    const rangeInputBeds = document.getElementById("beds");
+    const valueDisplayBeds = document.createElement("bed");
 
-valueDisplayBeds.classList.add("range-value");
-rangeInputBeds.parentNode.insertBefore(valueDisplayBeds, rangeInputBeds);
+    valueDisplayBeds.classList.add("range-value");
+    rangeInputBeds.parentNode.insertBefore(valueDisplayBeds, rangeInputBeds);
 
-rangeInputBeds.addEventListener("input", function() {
-    valueDisplayBeds.innerHTML = rangeInputBeds.value;
-    valueDisplayBeds.style.left = rangeInputBeds.value + "%";
+    rangeInputBeds.addEventListener("input", function() {
+        valueDisplayBeds.innerHTML = rangeInputBeds.value;
+        valueDisplayBeds.style.left = rangeInputBeds.value + "%";
+    });
+
+    const rangeInputCapacity = document.getElementById("capacity");
+    const valueDisplayCapacity = document.createElement("guests");
+
+    valueDisplayCapacity.classList.add("range-value");
+    rangeInputCapacity.parentNode.insertBefore(valueDisplayCapacity, rangeInputCapacity);
+
+    rangeInputCapacity.addEventListener("input", function() {
+        valueDisplayCapacity.innerHTML = rangeInputCapacity.value;
+        valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
 });
+}
 
-const rangeInputCapacity = document.getElementById("capacity");
-const valueDisplayCapacity = document.createElement("guests");
-
-valueDisplayCapacity.classList.add("range-value");
-rangeInputCapacity.parentNode.insertBefore(valueDisplayCapacity, rangeInputCapacity);
-
-rangeInputCapacity.addEventListener("input", function() {
-    valueDisplayCapacity.innerHTML = rangeInputCapacity.value;
-    valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
-});
