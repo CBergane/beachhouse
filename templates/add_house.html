@@ -16,6 +16,7 @@
                                     {% csrf_token %}
 
                                     {{ form.as_p}}
+                                    <label id="range-value" for="beds"></label>
                                     <input type="submit" id="book" value="Add House" class="btn btn-outline-success">
                                     <span class="btn btn-back btn-outline-secondary">Go Back</span>
                                     <span id="display"></span>

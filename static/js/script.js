@@ -30,8 +30,6 @@ if(checkInDate && checkOutDate && bookButton){
     }
 }
 
- 
-
 // a go back one page function
 
 $(document).ready(function() {
@@ -39,6 +37,8 @@ $(document).ready(function() {
         window.history.back();
     })
 })
+
+// add a function to calculate the price in real time
 
 const price = document.getElementById("price");
 if(price) {
@@ -55,3 +55,25 @@ if(price) {
     document.getElementById("id_checkin").addEventListener("change", calculateTotalPrice);
     document.getElementById("id_checkout").addEventListener("change", calculateTotalPrice);
 }
+
+const rangeInputBeds = document.getElementById("beds");
+const valueDisplayBeds = document.createElement("bed");
+
+valueDisplayBeds.classList.add("range-value");
+rangeInputBeds.parentNode.insertBefore(valueDisplayBeds, rangeInputBeds);
+
+rangeInputBeds.addEventListener("input", function() {
+    valueDisplayBeds.innerHTML = rangeInputBeds.value;
+    valueDisplayBeds.style.left = rangeInputBeds.value + "%";
+});
+
+const rangeInputCapacity = document.getElementById("capacity");
+const valueDisplayCapacity = document.createElement("guests");
+
+valueDisplayCapacity.classList.add("range-value");
+rangeInputCapacity.parentNode.insertBefore(valueDisplayCapacity, rangeInputCapacity);
+
+rangeInputCapacity.addEventListener("input", function() {
+    valueDisplayCapacity.innerHTML = rangeInputCapacity.value;
+    valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
+});
