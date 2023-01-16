@@ -48,6 +48,10 @@ class AddBooking(View):
         return render(request, 'add_booking.html', context)
 
     def post(self, request, *args, **kwargs):
+        '''
+        Posting the booking and if the form is approved,
+        then save it else try again
+        '''
         house_name = self.kwargs.get('house_id', None)
         house_list = House.objects.filter(id=house_name)
         form = BookingForm(request.POST)
@@ -88,6 +92,10 @@ class AddBooking(View):
 
         @csrf_exempt
         def calculate_cost(self, request):
+            '''
+            adding a way to calculate the total cost
+            of the booking as you chose days
+            '''
             checkin = request.POST.get('checkin')
             checkout = request.POST.get('checkout')
             house_id = request.POST.get('house_id')

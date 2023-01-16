@@ -1,30 +1,36 @@
  // Get the check-in date input element and the book button
-const checkInDate = document.getElementById("id_checkin");
+ const checkInDate = document.getElementById("id_checkin");
+const checkOutDate = document.getElementById("id_checkout");
 const bookButton = document.getElementById("book");
-if(checkInDate && bookButton){
-    checkInDate.addEventListener("change", checkDate);
-    function checkDate() {
-    // Add an event listener to the check-in date input that runs the checkDate function every time the input's value changes
-    checkInDate.addEventListener("change", checkDate);
-    // Define the checkDate function
-    function checkDate() {
-    // Get the current date
-    const currentDate = new Date();
-    // Get the check-in date from the input
-    const checkIn = new Date(checkInDate.value);
-    // Compare the check-in date to the current date
-    if (checkIn < currentDate) {
-        // If the check-in date is in the past, disable the book button
-        bookButton.disabled = true;
-        bookButton.value = "Check-in date is in the past, please correct";
-    } else {
-        // If the check-in date is in the future, enable the book button
-        bookButton.disabled = false;
-        bookButton.value = "Book"
-    }
+if(checkInDate && checkOutDate && bookButton){
+    checkInDate.addEventListener("change", checkDates);
+    checkOutDate.addEventListener("change", checkDates);
+    checkDates();
+    function checkDates() {
+        // Get the current date
+        const currentDate = new Date();
+        // Get the check-in date from the input
+        const checkIn = new Date(checkInDate.value);
+        // Get the check-out date from the input
+        const checkOut = new Date(checkOutDate.value);
+        // Compare the check-in date to the current date
+        if (checkIn < currentDate) {
+            // If the check-in date is in the past, disable the book button
+            bookButton.disabled = true;
+            bookButton.value = "Check-in date is in the past, please correct";
+        } else if (checkOut < currentDate) {
+            // If the check-out date is in the past, disable the book button
+            bookButton.disabled = true;
+            bookButton.value = "Check-out date is in the past, please correct";
+        } else {
+            // If the check-in and check-out dates are in the future, enable the book button
+            bookButton.disabled = false;
+            bookButton.value = "Book"
+        }
     }
 }
-}
+
+ 
 
 // a go back one page function
 
@@ -35,12 +41,12 @@ $(document).ready(function() {
 })
 
 function calculateTotalPrice() {
-    var checkInDate = new Date(document.getElementById("id_checkin").value);
-    var checkOutDate = new Date(document.getElementById("id_checkout").value);
-    var housePrice = document.getElementById("price").innerHTML;
-    var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-    var diffDays = Math.round(Math.abs((checkOutDate.getTime() - checkInDate.getTime())/(oneDay)));
-    var totalCost = diffDays * housePrice;
+    let checkInDate = new Date(document.getElementById("id_checkin").value);
+    let checkOutDate = new Date(document.getElementById("id_checkout").value);
+    let housePrice = document.getElementById("price").innerHTML;
+    let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+    let diffDays = Math.round(Math.abs((checkOutDate.getTime() - checkInDate.getTime())/(oneDay)));
+    let totalCost = diffDays * housePrice;
     document.getElementById("total_cost").innerHTML = totalCost;
 }
 
