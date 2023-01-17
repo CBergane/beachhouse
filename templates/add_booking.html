@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container square-box d-flex justify-content-center align-items-center">
+    <div class="row">
+        <div class="col-4">
         <div class="card shadow" style="width: 28rem;">
-            <div class="card-body">
+            <div class="card-body" style="--bs-bg-opacity: .5;">
                 <h1>Add a booking to {{obj}} {{user}}</h1>
                     {% include 'includes/messages.html' %}
                     <form action="" method="POST">
@@ -18,6 +19,7 @@
                         <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>
                     </form>
             </div>
+        </div>
         </div>
     </div>
 </div>

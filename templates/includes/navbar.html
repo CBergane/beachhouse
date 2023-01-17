@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -35,8 +35,8 @@
                       Staff tools
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="nav-link" href="{% url 'add-house' %}">Add a house</a></li>
-                      <li><a class="nav-link" href="{% url 'bookinglistadmin' %}">Admin</a></li>
+                      <li><a class="nav-link link" href="{% url 'add-house' %}">Add a house</a></li>
+                      <li><a class="nav-link link" href="{% url 'bookinglistadmin' %}">Admin</a></li>
                     </ul>
                   </li>
                 
