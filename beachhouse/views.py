@@ -141,7 +141,6 @@ class BookingList(ListView):
             'bookings': bookings,
         }
         for booking in bookings:
-            # house_owner = booking.house.owner
             house_owner = User.objects.get(pk=booking.house.owner)
             context['house_owner'] = house_owner
         return render(request, self.template_name, context)

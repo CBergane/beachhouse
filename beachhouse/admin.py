@@ -9,7 +9,7 @@ admin.site.register(Owner)
 
 @admin.register(House)
 class HouseAdmin(admin.ModelAdmin):
-    list_display = ('name', 'adress', 'owner')
+    list_display = ('name', 'adress', 'owner', 'approved')
     ordering = ('name',)
     search_fields = ('name', 'adress')
 

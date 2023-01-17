@@ -27,6 +27,7 @@ class House(models.Model):
     price = models.IntegerField('Price Per Night', default=0)
     description = models.TextField(blank=True)
     house_image = CloudinaryField('image', default='placeholder')
+    approved = models.BooleanField('Approved', default=False)
 
     def __str__(self):
         return self.name
