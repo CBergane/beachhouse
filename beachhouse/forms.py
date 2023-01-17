@@ -26,7 +26,7 @@ class HouseForm(ModelForm):
             'adress': '',
             'beds': 'Number of beds',
             'capacity': 'Number of guests',
-            'price': 'Price per night',
+            'price': 'Price per night €',
             'description': '',
             'house_image': 'Add a picture of your house',
         }
@@ -55,7 +55,10 @@ class HouseForm(ModelForm):
                 'max': '10',
                 'placeholder': 'Number of guests',
                 }),
-            'price': forms.NumberInput,
+            'price': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'step': 10,
+                }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Describe the house',

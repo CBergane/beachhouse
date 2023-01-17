@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container square-box d-flex justify-content-center align-items-center">
+<div class="container square-box d-flex justify-content-center align-items-center" style="background-image: url({{obj.house_image.url}}); background-size: cover;">
     <div class="row">
         <div class="col-4">
-        <div class="card shadow" style="width: 28rem;">
-            <div class="card-body" style="--bs-bg-opacity: .5;">
+        <div class="card booking shadow" style="width: 22rem; background-color: rgba(255, 255, 255, 0.7);">
+            <div class="card-body">
                 <h1>Add a booking to {{obj}} {{user}}</h1>
                     {% include 'includes/messages.html' %}
                     <form action="" method="POST">
                         {% csrf_token %}
                         {{ form.as_p}}
                         <input type="hidden" id="house_id" value="{{ house.id }}">
-                        <p class="card-text">Price per night: <span id="price">{{ obj.price }}</span></p>
-                        <p class="card-text">Total cost: <span id="total_cost"></span></p>
+                        <p class="card-text">Price per night: <span id="price">{{ obj.price }} &#8364;</span></p>
+                        <p class="card-text">Total cost: <span id="total_cost">&#8364;</span></p>
                         <p class="card-text">Owners email: {{ house_owner.email }}</p>
                         <input type="submit" id="book" value="Book" class="btn btn-outline-success btn-sm">
                         <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>

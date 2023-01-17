@@ -15,7 +15,7 @@
                     <div class="ms-2 me-auto">
                     <p>You have booked <strong>{{booking.house}}</strong>.</p>
                     <p><strong>From</strong> {{booking.checkin|date:"F d Y"}} <strong>untill</strong> {{booking.checkout|date:"F d Y"}}</p>
-                    <p>Total cost: {{booking.price}}</p>
+                    <p>Total cost: {{booking.price}} &#8364;</p>
                     <p>Contact: {{ house_owner.email }}</p>
                     <a href="{% url 'bookings-update' booking.id %}" class="btn btn-outline-success btn-sm">Update</a>
                     <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
