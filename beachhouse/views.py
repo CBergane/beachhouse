@@ -259,25 +259,56 @@ def booking_list_admin(
     request, year=datetime.now().year,
     month=datetime.now().strftime('%B')
         ):
-    month = month.capitalize()
-    # converting month to numbers
-    month_number = list(calendar.month_name).index(month)
-    month_number = int(month_number)
+    if request.user.is_superuser:
+        month = month.capitalize()
+        # converting month to numbers
+        month_number = list(calendar.month_name).index(month)
+        month_number = int(month_number)
 
-    # print out a calendar
-    cal = HTMLCalendar().formatmonth(year, month_number)
+        # print out a calendar
+        cal = HTMLCalendar().formatmonth(year, month_number)
 
-    # Get current year
-    now = datetime.now()
-    current_year = now.year
+        # Get current year
+        now = datetime.now()
+        current_year = now.year
 
-    booking_list = Bookings.objects.all()
+        # showing the uppcoming bookings
+        booking_list = Bookings.objects.all()
 
-    return render(request, 'admin/booking_list_admin.html', {
-        'year': year,
-        'month': month,
-        'month_number': month_number,
-        'cal': cal,
-        'current_year': current_year,
-        'booking_list': booking_list,
-    })
+        # display houses that need to be approved befor shown on the page
+        house_list = House.objects.all().order_by('name')
+
+        if request.method == 'POST':
+            id_list = request.POST.getlist('boxes')
+
+            house_list.update(approved=False)            
+
+            # update the database to approve the checkboxes
+            for box in id_list:
+                House.objects.filter(pk=int(box)).update(approved=True)
+
+            messages.success(request, 'House list has been updated')
+            return redirect('bookinglistadmin')
+        else:
+            return render(request, 'admin/booking_list_admin.html', {
+                'year': year,
+                'month': month,
+                'month_number': month_number,
+                'cal': cal,
+                'current_year': current_year,
+                'booking_list': booking_list,
+                'house_list': house_list,
+            })
+        return render(request, 'admin/booking_list_admin.html', {
+            'year': year,
+            'month': month,
+            'month_number': month_number,
+            'cal': cal,
+            'current_year': current_year,
+            'booking_list': booking_list,
+            'house_list': house_list,
+        })
+    else:
+        messages.success(request, "You don't have acces to this page")
+        return redirect('home')
+

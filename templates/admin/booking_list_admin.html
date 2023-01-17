@@ -1,15 +1,57 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <center>
-        <h1>Hello {{user}}, this is the bookings for {{month}} {{year}}:</h1>
-        {{cal|safe}}
-    </center>
-<h2>This is our uppcoming bookings:</h2>
-        {% for booking in booking_list %}
-        <p>{{booking}}
-        {{booking.checkin|date:"d F y"}} untill {{booking.checkout|date:"d F y"}}<br></p>
-        {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                {{cal|safe}}
+            </center>
+        </div>
+        <div class="col-md-6">
+            <h2>Uppcoming bookings:</h2>
+            <hr>
+            {% for booking in booking_list %}
+            <p>{{booking}}
+            {{booking.checkin|date:"d F y"}} untill {{booking.checkout|date:"d F y"}}<br></p>
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+            <h2>New houese to approve:</h2>
+            {% include 'includes/messages.html' %}
+            <hr>
+            <form action="" method=POST>
+                {% csrf_token %}
+            
+            <table class="table table-hover table-border">
+                <thead>
+                  <tr>
+                    <th scope="col">House Name</th>
+                    <th scope="col">Approved</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for house in house_list %}
+                    <tr>
+                      <td>{{house}}</td>
+                      <td>
+                        {% if house.approved %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" checked="checked" value="{{house.id}}" name="boxes">
+                        </div>
+                        {% else %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{house.id}}" name="boxes">
+                        </div>
+                        {% endif %}
+                      </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button class="btn btn-outline-secondary" type="submit">Update</button>
 
-
+        </div>
+    </div>
+</div>
 {% endblock %}
