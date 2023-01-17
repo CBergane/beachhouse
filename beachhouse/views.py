@@ -119,7 +119,7 @@ class BookingList(ListView):
 
     def get_queryset(self):
         # Retrieve the existing bookings from the database
-        bookings = super().get_queryset()
+        bookings = super().get_queryset().filter(user=self.request.user)
         for booking in bookings:
             checkin = booking.checkin
             checkout = booking.checkout
@@ -134,6 +134,17 @@ class BookingList(ListView):
             # Use the number of days to calculate the price of the booking
             booking.price = days * rate
         return bookings
+
+    def get(self, request, *args, **kwargs):
+        bookings = self.get_queryset()
+        context = {
+            'bookings': bookings,
+        }
+        for booking in bookings:
+            # house_owner = booking.house.owner
+            house_owner = User.objects.get(pk=booking.house.owner)
+            context['house_owner'] = house_owner
+        return render(request, self.template_name, context)
 
 
 def search_house(request):
@@ -190,8 +201,13 @@ def bookings_delete(request, bookings_id):
     Delete a booking
     '''
     booking = Bookings.objects.get(pk=bookings_id)
-    booking.delete()
-    return redirect('BookingList')
+    if request.user == booking.user:
+        booking.delete()
+        messages.success(request, ('Your booking has been deleted'))
+        return redirect('BookingList')
+    else:
+        messages.success(request, ('You dont have authorization to do this'))
+        return redirect('BookingList')
 
 
 def add_house(request):
