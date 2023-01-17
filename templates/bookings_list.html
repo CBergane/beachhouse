@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container" id="delete_booking">
 <h1 class="text-center">Hello {{user}}</h1>
 
 {% include 'includes/messages.html' %}
@@ -18,12 +18,31 @@
                     <p>Total cost: {{booking.price}}</p>
                     <p>Contact: {{ house_owner.email }}</p>
                     <a href="{% url 'bookings-update' booking.id %}" class="btn btn-outline-success btn-sm">Update</a>
-                    <a href="{% url 'bookings-delete' booking.id %}" onclick="return confirm('Are you sure you want to delete this?');" class="btn btn-outline-danger btn-sm">Delete</a>
+                    <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this booking?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'bookings-delete' booking.id %}" class="btn btn-danger" id="confirmDeleteButton">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 {% endfor %}
 </div>
+
 {% endblock %}

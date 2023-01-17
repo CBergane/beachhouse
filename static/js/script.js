@@ -115,3 +115,10 @@ if(document.getElementById('add_house')) {
         valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
 });
 }
+
+$('#confirmDeleteModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var id = button.data('id');
+    var modal = $(this);
+    modal.find('.modal-footer #confirmDeleteButton').attr("href", 'delete_view/' + id);
+  });

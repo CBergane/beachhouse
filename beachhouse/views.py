@@ -284,7 +284,7 @@ def booking_list_admin(
         if request.method == 'POST':
             id_list = request.POST.getlist('boxes')
 
-            house_list.update(approved=False)            
+            house_list.update(approved=False)
 
             # update the database to approve the checkboxes
             for box in id_list:
@@ -314,4 +314,3 @@ def booking_list_admin(
     else:
         messages.success(request, "You don't have acces to this page")
         return redirect('home')
-

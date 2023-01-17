@@ -10,10 +10,26 @@
                 {{ form.as_p }}
 
                 <input type="submit" value="Update" class="btn btn-outline-success btn-sm">
-                <a href="{% url 'house-delete' house.id %}" class="btn btn-outline-danger btn-sm">Delete House</a>
+                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
             </form>
         </div>
     </div>
 </div>
-    
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this house?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outlinesecondary" data-bs-dismiss="modal">Close</button>
+            <a href="{% url 'house-delete' house.id %}" class="btn btn-outline-danger btn-sm">Delete House</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
