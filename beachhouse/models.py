@@ -21,7 +21,7 @@ class Owner(models.Model):
 class House(models.Model):
     name = models.CharField('House Name', max_length=20)
     adress = models.CharField('House Adress', max_length=30)
-    owner = models.ForeignKey(Owner, null=True, on_delete=models.CASCADE)
+    owner = models.IntegerField('House Owner', blank=False, default=1)
     beds = models.IntegerField('Number Of Beds', default=0)
     capacity = models.IntegerField('Number Of Guests', default=0)
     price = models.IntegerField('Price Per Night', default=0)

@@ -200,7 +200,9 @@ def add_house(request):
         form = HouseForm(request.POST, request.FILES)
         if form.is_valid():
             messages.success(request, 'Your house has been added')
-            form.save()
+            house = form.save(commit=False)
+            house.owner = request.user.id  # request the users id
+            house.save()
             return HttpResponseRedirect('add_house?submitted=True')
     else:
         form = HouseForm

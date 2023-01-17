@@ -15,7 +15,6 @@ class HouseForm(ModelForm):
         fields = (
             'name',
             'adress',
-            'owner',
             'beds',
             'capacity',
             'price',
@@ -25,7 +24,6 @@ class HouseForm(ModelForm):
         labels = {
             'name': '',
             'adress': '',
-            'owner': 'Owner of the house',
             'beds': 'Number of beds',
             'capacity': 'Number of guests',
             'price': 'Price per night',
@@ -40,10 +38,6 @@ class HouseForm(ModelForm):
             'adress': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'House Adress',
-                }),
-            'owner': forms.Select(attrs={
-                'class': 'form-select',
-                'placeholder': 'Owner of the house',
                 }),
             'beds': forms.NumberInput(attrs={
                 'class': 'form-range',

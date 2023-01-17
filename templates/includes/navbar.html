@@ -29,7 +29,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'house-list' %}">Our Houses</a>
                 </li>
-                {% if user.is_staff %}
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Staff tools
@@ -39,7 +39,7 @@
                       <li><a class="nav-link" href="{% url 'bookinglistadmin' %}">Admin</a></li>
                     </ul>
                   </li>
-                {% endif %}
+                
             </ul>
             <form class="d-flex" role="search" method="POST" action="{% url 'search-house' %}">
                 {% csrf_token %}
