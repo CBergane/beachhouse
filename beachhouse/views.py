@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.views.generic import ListView, View
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from .models import House, Bookings
 from .forms import BookingForm, HouseForm
@@ -39,11 +40,13 @@ class AddBooking(View):
         house_list = House.objects.filter(id=house_name)
         if len(house_list) > 0:
             house = house_list[0]
+            house_owner = User.objects.get(pk=house.owner)
             obj = House.objects.get(id=house_name)
             context = {
                 'house_name': house_name,
                 'form': form,
                 'obj': obj,
+                'house_owner': house_owner,
             }
         return render(request, 'add_booking.html', context)
 

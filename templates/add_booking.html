@@ -13,6 +13,7 @@
                         <input type="hidden" id="house_id" value="{{ house.id }}">
                         <p class="card-text">Price per night: <span id="price">{{ obj.price }}</span></p>
                         <p class="card-text">Total cost: <span id="total_cost"></span></p>
+                        <p class="card-text">Owners email: {{ house_owner.email }}</p>
                         <input type="submit" id="book" value="Book" class="btn btn-outline-success btn-sm">
                         <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>
                     </form>
