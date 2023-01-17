@@ -273,7 +273,10 @@ def booking_list_admin(
         current_year = now.year
 
         # showing the uppcoming bookings
-        booking_list = Bookings.objects.all()
+        booking_list = Bookings.objects.filter(
+            checkin__year=year,
+            checkin__month=month_number,
+        )
 
         # display houses that need to be approved befor shown on the page
         house_list = House.objects.all().order_by('name')
