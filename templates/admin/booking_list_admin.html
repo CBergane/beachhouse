@@ -4,21 +4,17 @@
 <div class="container">
     <div class="row gy-5 justify-content-center">
         <div class="col-8 text-center ms-md-auto">
-            
-                {{cal|safe}}
-            
+            {{cal|safe}}
         </div>
         <div class="col-md-6">
             <h2>Uppcoming bookings for {{month}}:</h2>
             <hr>
             {% if booking_list %}
-
                 {% for booking in booking_list %}
-                <p>{{booking}}
-                {{booking.checkin|date:"d F y"}} untill {{booking.checkout|date:"d F y"}}<br></p>
+                <p>{{booking}} {{booking.checkin|date:"d F y"}} untill {{booking.checkout|date:"d F y"}}<br></p>
                 {% endfor %}
             {% else %}
-            <h2>Sorry no booking this month.</h2>
+                <h2>Sorry no booking this month.</h2>
             {% endif %}
         </div>
         <div class="col-md-6">
@@ -56,7 +52,6 @@
                 </tbody>
             </table>
             <button class="btn btn-outline-secondary" type="submit">Update</button>
-
         </div>
     </div>
 </div>

@@ -12,8 +12,8 @@
                         {% csrf_token %}
                         {{ form.as_p}}
                         <input type="hidden" id="house_id" value="{{ house.id }}">
-                        <p class="card-text">Price per night: <span id="price">{{ obj.price }} &#8364;</span></p>
-                        <p class="card-text">Total cost: <span id="total_cost">&#8364;</span></p>
+                        <p class="card-text">Price per night: <span id="price">{{ obj.price }}</span> &#8364;</p>
+                        <p class="card-text">Total cost: <span id="total_cost"></span> &#8364;</p>
                         <p class="card-text">Owners email: {{ house_owner.email }}</p>
                         <input type="submit" id="book" value="Book" class="btn btn-outline-success btn-sm">
                         <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>
