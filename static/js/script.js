@@ -113,7 +113,20 @@ if(document.getElementById('add_house')) {
     rangeInputCapacity.addEventListener("input", function() {
         valueDisplayCapacity.innerHTML = rangeInputCapacity.value;
         valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
-});
+    });
+}
+
+if(document.getElementById('filter_house')){
+    const rangeInputCapacity = document.getElementById("capacity");
+    const valueDisplayCapacity = document.createElement("guests");
+
+    valueDisplayCapacity.classList.add("range-value");
+    rangeInputCapacity.parentNode.insertBefore(valueDisplayCapacity, rangeInputCapacity);
+
+    rangeInputCapacity.addEventListener("input", function() {
+        valueDisplayCapacity.innerHTML = rangeInputCapacity.value;
+        valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
+    });
 }
 
 $('#confirmDeleteModal').on('show.bs.modal', function (event) {
