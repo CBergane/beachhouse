@@ -130,16 +130,53 @@ class BookingForm(forms.ModelForm):
 
 
 class HouseSearchForm(forms.ModelForm):
-    BED_SIZE_CHOICES = [
-        ('S', 'Single'),
-        ('D', 'Double'),
-        ('Q', 'Queen'),
-        ('K', 'King'),
-    ]
-    bed_size = forms.ChoiceField(choices=BED_SIZE_CHOICES, required=False)
-    has_wifi = forms.BooleanField(required=False)
-    has_tv = forms.BooleanField(required=False)
-    has_bbq = forms.BooleanField(required=False)
-    has_shower = forms.BooleanField(required=False)
-    has_bath = forms.BooleanField(required=False)
-    guests = forms.IntegerField(required=False)
+
+    class Meta:
+        model = House
+
+        fields = (
+            'bed_size',
+            'capacity',
+            'has_tv',
+            'has_wifi',
+            'has_bbq',
+            'has_shower',
+            'has_bath',
+        )
+        labels = {
+            'capacity': 'Number of guests',
+            'has_tv': 'Tv',
+            'has_wifi': 'WiFi',
+            'has_bbq': 'Dose it have a grill',
+            'has_shower': 'Shower',
+            'has_bath': 'Bath',
+            'bed_size': 'Bed Size',
+        }
+        widgets = {
+            'bed_size': forms.Select(attrs={
+                'class': 'form-select',
+            }),
+            'capacity': forms.NumberInput(attrs={
+                'class': 'form-range',
+                'id': 'capacity',
+                'type': 'range',
+                'min': '0',
+                'max': '10',
+                'placeholder': 'Number of guests',
+            }),
+            'has_tv': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'has_wifi': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'has_bbq': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'has_shower': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'has_bath': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+        }
