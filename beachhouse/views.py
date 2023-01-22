@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from .models import House, Bookings
-from .forms import BookingForm, HouseForm
+from .forms import BookingForm, HouseForm, HouseSearchForm
 from beachhouse.booking.booking_function import check_availability
 
 
@@ -18,6 +18,7 @@ def base(request):
 
 
 def index(request):
+    form = H
     return render(request, 'index.html', {})
 
 

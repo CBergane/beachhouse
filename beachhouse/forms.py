@@ -17,6 +17,12 @@ class HouseForm(ModelForm):
             'adress',
             'beds',
             'capacity',
+            'has_tv',
+            'has_wifi',
+            'has_bbq',
+            'has_shower',
+            'has_bath',
+            'bed_size',
             'price',
             'description',
             'house_image',
@@ -26,6 +32,12 @@ class HouseForm(ModelForm):
             'adress': '',
             'beds': 'Number of beds',
             'capacity': 'Number of guests',
+            'has_tv': 'Tv',
+            'has_wifi': 'WiFi',
+            'has_bbq': 'Dose it have a grill',
+            'has_shower': 'Shower',
+            'has_bath': 'Bath',
+            'bed_size': 'Bed Size',
             'price': 'Price per night €',
             'description': '',
             'house_image': 'Add a picture of your house',
@@ -55,6 +67,24 @@ class HouseForm(ModelForm):
                 'max': '10',
                 'placeholder': 'Number of guests',
                 }),
+            'has_tv': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'has_wifi': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'has_bbq': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'has_shower': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'has_bath': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                }),
+            'bed_size': forms.Select(attrs={
+                'class': 'dropdown-toggle',
+            }),
             'price': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'step': 10,
@@ -99,7 +129,7 @@ class BookingForm(forms.ModelForm):
         }
 
 
-class HouseSearchForm(forms.Form):
+class HouseSearchForm(forms.ModelForm):
     BED_SIZE_CHOICES = [
         ('S', 'Single'),
         ('D', 'Double'),
