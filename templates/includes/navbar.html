@@ -29,17 +29,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'house-list' %}">Our Houses</a>
                 </li>
-                
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Staff tools
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="nav-link link" href="{% url 'add-house' %}">Add a house</a></li>
-                      <li><a class="nav-link link" href="{% url 'bookinglistadmin' %}">Admin</a></li>
-                    </ul>
-                  </li>
-                
+                {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link link" href="{% url 'bookinglistadmin' %}">Admin</a>
+                </li>
+                {% endif %}
             </ul>
             <form class="d-flex" role="search" method="POST" action="{% url 'search-house' %}">
                 {% csrf_token %}
