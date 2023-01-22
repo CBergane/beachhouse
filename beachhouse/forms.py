@@ -97,3 +97,19 @@ class BookingForm(forms.ModelForm):
                     }
             ),
         }
+
+
+class HouseSearchForm(forms.Form):
+    BED_SIZE_CHOICES = [
+        ('S', 'Single'),
+        ('D', 'Double'),
+        ('Q', 'Queen'),
+        ('K', 'King'),
+    ]
+    bed_size = forms.ChoiceField(choices=BED_SIZE_CHOICES, required=False)
+    has_wifi = forms.BooleanField(required=False)
+    has_tv = forms.BooleanField(required=False)
+    has_bbq = forms.BooleanField(required=False)
+    has_shower = forms.BooleanField(required=False)
+    has_bath = forms.BooleanField(required=False)
+    guests = forms.IntegerField(required=False)
