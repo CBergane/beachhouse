@@ -16,11 +16,11 @@
                 {{ form.as_p }}
                 <input type="submit" value="Search" class="btn btn-outline-success btn-sm">
             </form>
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Book</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Book</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,8 +31,8 @@
                     {% if not form.cleaned_data.has_shower or house.has_shower %}
                     {% if not form.cleaned_data.has_bath or house.has_bath %}
                     <tr>
-                        <td>{{ house.name }}</td>
-                        <td>
+                        <td colspan="1">{{ house.name }}</td>
+                        <td colspan="1">
                             <a href="{% url 'add-booking' house.id %}" class="btn btn-outline-success">Book</a>
                         </td>
                     </tr>

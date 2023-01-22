@@ -30,7 +30,7 @@ def index(request):
         has_bbq = form.cleaned_data.get('has_bbq')
         has_shower = form.cleaned_data.get('has_shower')
         has_bath = form.cleaned_data.get('has_bath')
-        guests = form.cleaned_data.get('guests')
+        capacity = form.cleaned_data.get('capacity')
         if bed_size:
             houses = houses.filter(bed_size=bed_size)
         if has_wifi:
@@ -43,8 +43,8 @@ def index(request):
             houses = houses.filter(has_shower=True)
         if has_bath:
             houses = houses.filter(has_bath=True)
-        if guests:
-            houses = houses.filter(guests__gte=guests)
+        if capacity:
+            houses = houses.filter(capacity__gte=capacity)
     return render(request, 'index.html', {'form': form, 'houses': houses})
 
 
@@ -164,8 +164,10 @@ class BookingList(ListView):
 
     def get(self, request, *args, **kwargs):
         bookings = self.get_queryset()
+        houses = House.objects.filter(owner=self.request.user.pk)
         context = {
             'bookings': bookings,
+            'houses': houses,
         }
         for booking in bookings:
             house_owner = User.objects.get(pk=booking.house.owner)
