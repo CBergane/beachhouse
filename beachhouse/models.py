@@ -27,6 +27,22 @@ class House(models.Model):
     price = models.IntegerField('Price Per Night', default=0)
     description = models.TextField(blank=True)
     house_image = CloudinaryField('image', default='placeholder')
+    has_tv = models.BooleanField(default=False)
+    has_wifi = models.BooleanField(default=False)
+    has_bbq = models.BooleanField(default=False)
+    has_shower = models.BooleanField(default=False)
+    has_bath = models.BooleanField(default=False)
+    BED_SIZE_CHOICES = [
+        ('S', 'Single'),
+        ('D', 'Double'),
+        ('Q', 'Queen'),
+        ('K', 'King'),
+    ]
+    bed_size = models.CharField(
+        max_length=1,
+        choices=BED_SIZE_CHOICES,
+        default='D',
+    )
     approved = models.BooleanField('Approved', default=False)
 
     def __str__(self):
