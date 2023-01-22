@@ -1,48 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container" id="filter_house">
     <center>
         <h1>Main page</h1>
         {% include 'includes/messages.html' %}
     </center>
-    <form method="GET">
-        {{ form.as_p }}
-        <input type="submit" value="Search">
-    </form>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Bed Size</th>
-                <th>Wi-Fi</th>
-                <th>TV</th>
-                <th>BBQ</th>
-                <th>Shower</th>
-                <th>Bath</th>
-                <th>Capacity</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for house in houses %}
-            {% if not form.cleaned_data.has_wifi or house.has_wifi %}
-            {% if not form.cleaned_data.has_tv or house.has_tv %}
-            {% if not form.cleaned_data.has_bbq or house.has_bbq %}
-            {% if not form.cleaned_data.has_shower or house.has_shower %}
-            {% if not form.cleaned_data.has_bath or house.has_bath %}
-            <tr>
-                <td>{{ house.name }}</td>
-                <td>{{ house.get_bed_size_display }}</td>
-                <td>{{ house.has_wifi }}</td>
-                <td>{{ house.has_tv }}</td>
-                <td>{{ house.has_bbq }}</td>
-                <td>{{ house.has_shower }}</td>
-                <td>{{ house.has_bath }}</td>
-                <td>{{ house.capacity }}</td>
-            </tr>
-            {% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col align-self-end">
+            <form method="GET">
+                {{ form.as_p }}
+                <input type="submit" value="Search" class="btn btn-outline-success btn-sm">
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for house in houses %}
+                    {% if not form.cleaned_data.has_wifi or house.has_wifi %}
+                    {% if not form.cleaned_data.has_tv or house.has_tv %}
+                    {% if not form.cleaned_data.has_bbq or house.has_bbq %}
+                    {% if not form.cleaned_data.has_shower or house.has_shower %}
+                    {% if not form.cleaned_data.has_bath or house.has_bath %}
+                    <tr>
+                        <td>{{ house.name }}</td>
+                        <td>
+                            <a href="{% url 'add-booking' house.id %}" class="btn btn-outline-success">Book</a>
+                        </td>
+                    </tr>
+                    {% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}

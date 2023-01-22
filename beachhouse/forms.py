@@ -155,7 +155,7 @@ class HouseSearchForm(forms.ModelForm):
         widgets = {
             'bed_size': forms.Select(attrs={
                 'class': 'form-select',
-            }),
+                }),
             'capacity': forms.NumberInput(attrs={
                 'class': 'form-range',
                 'id': 'capacity',
@@ -163,7 +163,7 @@ class HouseSearchForm(forms.ModelForm):
                 'min': '0',
                 'max': '10',
                 'placeholder': 'Number of guests',
-            }),
+                }),
             'has_tv': forms.CheckboxInput(attrs={
                 'class': 'form-check-input',
                 }),
