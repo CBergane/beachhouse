@@ -310,6 +310,32 @@ def booking_list_admin(
         # display houses that need to be approved befor shown on the page
         house_list = House.objects.all().order_by('name')
 
+        if request.method == 'GET':
+            year = int(request.GET.get('year', datetime.now().year))
+            month = request.GET.get('month', datetime.now().strftime('%B'))
+            month = month.capitalize()
+            month_number = list(calendar.month_name).index(month)
+            month_number = int(month_number)
+            if 'prev' in request.GET:
+                month_number = month_number - 1 if month_number > 1 else 12
+                month = calendar.month_name[month_number]
+            elif 'next' in request.GET:
+                month_number = month_number + 1 if month_number < 12 else 1
+                month = calendar.month_name[month_number]
+            booking_list = Bookings.objects.filter(
+                checkin__year=year,
+                checkin__month=month_number,
+            )
+            return render(request, 'admin/booking_list_admin.html', {
+                'year': year,
+                'month': month,
+                'month_number': month_number,
+                'cal': cal,
+                'current_year': current_year,
+                'booking_list': booking_list,
+                'house_list': house_list,
+                })
+
         if request.method == 'POST':
             id_list = request.POST.getlist('boxes')
 
