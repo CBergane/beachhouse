@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container" id="filter_house">
+<div id="filter_house">
         
         {% include 'includes/messages.html' %}
     
     <div class="row text-center">
         <div class="col-md-12">
-            <h1>Main page</h1>
+            <section>
+            <h1 id="text">Beach House Rental</h1>
+            <img src="../media/water2.png" class="img-fluid" alt="" id="bg">
+            <img src="../media/water0.png" class="img-fluid" alt="" id="water">
+        </section>
         </div>
-    </div>    
+    </div>
+    <div class="container">
     <div class="row">
         <div class="col">
         </div>
@@ -20,7 +25,7 @@
                 {{ form.as_p }}
                 <input type="submit" value="Search" class="btn btn-outline-success btn-sm">
             </form>
-            <table class="table">
+            <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
