@@ -17,6 +17,15 @@ body {
     min-height: 680px;
 }
 
+.fade-in {
+    opacity: 0;
+    transition: opacity 400ms ease-in;
+}
+
+.fade-in.appear {
+    opacity: 1;
+}
+
 /* Colors */
 body {
     background-color: #CEE1E8;

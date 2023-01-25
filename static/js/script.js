@@ -1,4 +1,4 @@
- // Get the check-in date input element and the book button
+// Get the check-in date input element and the book button
 const checkInDate = document.getElementById("id_checkin");
 const checkOutDate = document.getElementById("id_checkout");
 const bookButton = document.getElementById("book");
@@ -135,3 +135,30 @@ $('#confirmDeleteModal').on('show.bs.modal', function (event) {
     var modal = $(this);
     modal.find('.modal-footer #confirmDeleteButton').attr("href", 'delete_view/' + id);
   });
+
+  const faders = document.querySelectorAll('.fade-in');
+
+  const apperOptions = {
+    threshold: 1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const apperOnScroll = new IntersectionObserver(
+    function(
+        entries,
+        apperOnScroll)
+        {
+            entries.forEach(entries => {
+                if (!entries.isIntersecting) {
+                    return;
+                } else{
+                    entries.target.classList.add('appear');
+                    apperOnScroll.unobserve(entries.target);
+                }
+            })
+        },
+        apperOptions);
+
+        faders.forEach(fader => {
+            apperOnScroll.observe(fader)
+        })
