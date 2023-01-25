@@ -8,10 +8,11 @@
 {% include 'includes/messages.html' %}  
 <div class="container">
   <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 col-sm-12">
           <h2>Bookings</h2>
-          <table class="table align-middle mb-0 bg-white">
-              <thead class="bg-light">
+          <div class="table-responsive overflow-x-auto">
+          <table class="table align-middle mb-0">
+              <thead>
                   <tr>
                       <th>House</th>
                       <th>Check-in</th>
@@ -55,11 +56,12 @@
                   {% endfor %}
               </tbody>
           </table>
+        </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 col-sm-12">
           <h2>Houses Owned</h2>
-          <table class="table align-middle mb-0 bg-white">
-              <thead class="bg-light">
+          <table class="table align-middle mb-0">
+              <thead>
                   <tr>
                       <th scope="row">House</th>
                       <th scope="row">Location</th>

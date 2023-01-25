@@ -334,6 +334,7 @@ def booking_list_admin(
                 'current_year': current_year,
                 'booking_list': booking_list,
                 'house_list': house_list,
+                'now': now,
                 })
 
         if request.method == 'POST':
@@ -356,6 +357,7 @@ def booking_list_admin(
                 'current_year': current_year,
                 'booking_list': booking_list,
                 'house_list': house_list,
+                'now': now,
             })
         return render(request, 'admin/booking_list_admin.html', {
             'year': year,
@@ -365,6 +367,7 @@ def booking_list_admin(
             'current_year': current_year,
             'booking_list': booking_list,
             'house_list': house_list,
+            'now': now,
         })
     else:
         messages.success(request, "You don't have acces to this page")
