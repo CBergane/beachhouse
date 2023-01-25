@@ -6,6 +6,7 @@
         <div class="col-8 text-center ms-md-auto">
             {{cal|safe}}
         </div>
+        {% include 'includes/messages.html' %}
         <div id="booking-list" class="col-md-6">
             <h2>Uppcoming bookings for {{month}}:</h2>
             <hr>
@@ -13,7 +14,8 @@
             <a class="btn btn-outline-secondary" href="?next=true&month={{ month }}&year={{ year }}">Next Month</a>
             {% if booking_list %}
                 {% for booking in booking_list %}
-                <p>{{booking}} {{booking.checkin|date:"d F y"}} untill {{booking.checkout|date:"d F y"}}<br></p>
+                <p>{{booking}} {{booking.checkin|date:"d F Y"}} untill {{booking.checkout|date:"d F Y"}}<br></p>
+                <a href="{% url 'bookings-checkout' booking.id %}" class="btn btn-outline-danger btn-sm">Checkout</a>
                 {% endfor %}
             {% else %}
                 <h2>Sorry no booking this month.</h2>
@@ -22,7 +24,6 @@
         <div class="col-md-6">
             <h2>List of houses:</h2>
             <hr>
-            {% include 'includes/messages.html' %}
             <p><small class="text-muted">Check the boxes of the houses you wish to display</small></p>
             <form action="" method=POST>
                 {% csrf_token %}

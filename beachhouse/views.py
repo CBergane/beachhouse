@@ -369,3 +369,15 @@ def booking_list_admin(
     else:
         messages.success(request, "You don't have acces to this page")
         return redirect('home')
+
+
+def checkout_booking(request, bookings_id):
+    '''
+    Add a checkout function simular to the delete function for
+    the admin to handle bookings
+    '''
+    if request.user.is_staff:
+        booking = Bookings.objects.get(pk=bookings_id)
+        booking.delete()
+        messages.success(request, 'Booking has been checked out')
+    return redirect('bookinglistadmin')

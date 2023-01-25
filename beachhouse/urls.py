@@ -50,4 +50,8 @@ urlpatterns = [
         '<int:year>/<str:month>',
         views.booking_list_admin,
         name='bookinglistadmin'),
+    path(
+        'bookings_checkout/<bookings_id>',
+        login_required(views.checkout_booking),
+        name='bookings-checkout'),
         ]
