@@ -8,10 +8,6 @@ body {
     font-family: 'Poppins', sans-serif;
   }  
 
-#wrap {
-    min-height: 100%;
-}
-
 .square-box{
     max-width: 950px;
     min-height: 680px;
@@ -54,7 +50,9 @@ body {
 
 .footer {
     height: 85px;
+    width: 100%;
     padding-top: 0;
+    overflow: auto;
 }
 
 .btn-outline-success{
@@ -115,7 +113,7 @@ section img {
 @media screen and (max-width: 600px) {
     section {
       flex-direction: column;
-      height: 40vh;
+      height: 35vh;
     }
   }
 
@@ -123,7 +121,6 @@ section img {
 .icons{
     justify-content: center;
     display: flex;
-    
 }
 
 .icons a {
