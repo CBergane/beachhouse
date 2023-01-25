@@ -171,15 +171,10 @@ window.addEventListener('scroll', function() {
     text.style.top = value * 0.7 + 'px'
 })
 
-// $(document).ready(function() {
-//     $('#house').submit(function(e) {
-//         e.preventDefault();
-//         $('#result').modal('show');
-//     });
-// });
-
-// $(document).ready(function() {
-//     $('#openModal').click(function() {
-//         $('#result').modal('show');
-//     });
-// });
+$(document).ready(function() {
+    if ($("form").attr("action")) {
+        $('html, body').animate({
+            scrollTop: $("#result").offset().top
+        }, 100);
+    }
+});

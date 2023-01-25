@@ -14,11 +14,11 @@
             <h2>Add something here</h2>
         </div>
         <div class="col-md-6 align-self-end">
-            <form method="GET" id="house">
+            <form method="GET" id="house" action="{% url 'index' %}">
                 {{ form.as_p }}
                 <input type="submit" value="Search" class="btn btn-outline-success btn-sm">
             </form>
-            <table class="table table-responsive">
+            <table class="table table-responsive" id="result">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
