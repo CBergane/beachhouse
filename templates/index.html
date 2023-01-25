@@ -2,23 +2,19 @@
 
 {% block content %}
 <div id="filter_house">
-        
         {% include 'includes/messages.html' %}
-    
-
-            <section>
+        <section>
             <h1 id="text">Beach House Rental</h1>
             <img src="../media/water2.png" class="img-fluid" alt="" id="bg">
             <img src="../media/water0.png" class="img-fluid" alt="" id="water">
         </section>
-
     <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        
-      </div>
+        <div class="col-md-6">
+            <h2>Add something here</h2>
+        </div>
         <div class="col-md-6 align-self-end">
-            <form method="GET">
+            <form method="GET" id="house">
                 {{ form.as_p }}
                 <input type="submit" value="Search" class="btn btn-outline-success btn-sm">
             </form>

@@ -170,3 +170,16 @@ window.addEventListener('scroll', function() {
     water.style.top = value * 0.1 + 'px'
     text.style.top = value * 0.7 + 'px'
 })
+
+// $(document).ready(function() {
+//     $('#house').submit(function(e) {
+//         e.preventDefault();
+//         $('#result').modal('show');
+//     });
+// });
+
+// $(document).ready(function() {
+//     $('#openModal').click(function() {
+//         $('#result').modal('show');
+//     });
+// });
