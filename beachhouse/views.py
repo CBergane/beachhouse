@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import calendar
 from calendar import HTMLCalendar
 from datetime import datetime, timedelta
@@ -384,3 +384,8 @@ def checkout_booking(request, bookings_id):
         booking.delete()
         messages.success(request, 'Booking has been checked out')
     return redirect('bookinglistadmin')
+
+
+def house_detail(request, pk):
+    house = get_object_or_404(House, pk=pk)
+    return render(request, 'house_detail.html', {'house': house})
