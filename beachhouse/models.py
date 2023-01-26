@@ -3,6 +3,7 @@ from django import forms
 from django.conf import settings
 from cloudinary.models import CloudinaryField
 from django.core.exceptions import ValidationError
+from django.urls import reverse
 import pytz
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -44,6 +45,9 @@ class House(models.Model):
         default='D',
     )
     approved = models.BooleanField('Approved', default=False)
+
+    def get_absolute_url(self):
+        return reverse('house-detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name
