@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container square-box">
+    <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-6">
+                <div class="card shadow" style="width: 18rem;">
+                    <img src="{{ house.house_image.url }}" class="card-img-top img-fluid" alt="Card Image">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{house}}</h5>
+                        <p class="card-text">{{house.description}}</p>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-4 col-sm-4">
+            <table>
+                <thead>
+                    <th>Inventory</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tv</td>
+                        <td>{{house.has_tv}}</td>
+                    </tr>
+                    <tr>
+                        <td>WiFi</td>
+                        <td>{{house.has_wifi}}</td>
+                    </tr>
+                    <tr>
+                        <td>Grill</td>
+                        <td>{{house.has_bbq}}</td>
+                    </tr>
+                    <tr>
+                        <td>Shower</td>
+                        <td>{{house.has_shower}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bath</td>
+                        <td>{{house.has_bath}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bed Size</td>
+                        <td>{{house.bed_size}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
