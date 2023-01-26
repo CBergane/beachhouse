@@ -54,4 +54,8 @@ urlpatterns = [
         'bookings_checkout/<bookings_id>',
         login_required(views.checkout_booking),
         name='bookings-checkout'),
+    path(
+        'house/<int:pk>',
+        views.house_detail,
+        name='house-detail'),
         ]
