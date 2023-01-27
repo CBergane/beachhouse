@@ -196,24 +196,6 @@ class BookingList(ListView):
         return render(request, self.template_name, context)
 
 
-def search_house(request):
-    '''
-    Preforms a search of the houses in the database
-    '''
-    if request.method == 'POST':
-        searched = request.POST['searched']
-        house = House.objects.filter(
-            Q(name__icontains=searched) | Q(adress__icontains=searched)
-            )
-        return render(request, 'search_house.html', {
-            'searched': searched,
-            'house': house,
-            }
-            )
-    else:
-        return render(request, 'search_house.html', {})
-
-
 def bookings_update(request, bookings_id):
     '''
     Uppdate a existing booking

@@ -27,10 +27,6 @@ urlpatterns = [
         login_required(BookingList.as_view()),
         name='BookingList'),
     path(
-        'search_house',
-        views.search_house,
-        name='search-house'),
-    path(
         'add_house',
         login_required(views.add_house),
         name='add-house'),
