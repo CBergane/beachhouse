@@ -176,3 +176,13 @@ if(document.getElementById('list_house')) {
         });
     };
 
+function resetForm(){
+    document.getElementById("beds").value="";
+    document.getElementById("capacity").value="";
+    document.getElementById("has_wifi").checked = false;
+    document.getElementById("has_tv").checked = false;
+    document.getElementById("has_bbq").checked = false;
+    document.getElementById("has_shower").checked = false;
+    document.getElementById("has_bath").checked = false;
+    document.getElementById("filterForm").submit();
+  }

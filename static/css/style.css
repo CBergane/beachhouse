@@ -22,6 +22,23 @@ body {
     opacity: 1;
 }
 
+/* Horizontal form layout */
+.form-group {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  
+  /* Smaller form-control */
+  .small-select {
+    width: 80px;
+  }
+  
+  /* Align labels and form controls horizontally */
+  label {
+    margin-right: 10px;
+  }
+
 /* Colors */
 body {
     background-color: #CEE1E8;

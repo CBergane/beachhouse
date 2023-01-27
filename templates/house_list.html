@@ -3,6 +3,71 @@
 {% block content %}
 <div class="container" id="list_house">
     <div class="row">
+        <div class="col-md-12 col-sm-12">
+                <button class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
+                    Filter
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" type="reset" onclick="resetForm()">Reset</button>
+                <div class="collapse" id="collapse">
+                    <div>
+                        <form class="form-group" id="filterForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="beds" name="beds">
+                                            <option selected value="">All</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <label for="beds">Number of Beds</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <select class="form-select" id="capacity" name="capacity">
+                                            <option value="">All</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <label for="capacity">Minimum Capacity</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Comfort</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="has_wifi" id="has_wifi" value="true">
+                                        <label class="form-check-label" for="has_wifi">WiFi</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="has_tv" id="has_tv" value="true">
+                                        <label class="form-check-label" for="has_tv">TV</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="has_bbq" id="has_bbq" value="true">
+                                        <label class="form-check-label" for="has_bbq">BBQ</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="has_shower" id="has_shower" value="true">
+                                        <label class="form-check-label" for="has_shower">Shower</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="has_bath" id="has_bath" value="true">
+                                        <label class="form-check-label" for="has_bath">Bath</label>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <input class="btn btn-outline-success btn-sm" type="submit" value="Apply">
+                                   
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% for houses in house_list %}
         {% if houses.approved %}
         <div class="col-lg-4 mb-3 d-flex">

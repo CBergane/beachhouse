@@ -53,6 +53,27 @@ def house_list(request):
     List all houses in the database
     '''
     house_list = House.objects.all()
+    beds = request.GET.get('beds')
+    has_wifi = request.GET.get('has_wifi')
+    has_tv = request.GET.get('has_tv')
+    has_bbq = request.GET.get('has_bbq')
+    has_shower = request.GET.get('has_shower')
+    has_bath = request.GET.get('has_bath')
+    capacity = request.GET.get('capacity')
+    if beds:
+        house_list = house_list.filter(beds=beds)
+    if has_wifi:
+        house_list = house_list.filter(has_wifi=True)
+    if has_tv:
+        house_list = house_list.filter(has_tv=True)
+    if has_bbq:
+        house_list = house_list.filter(has_bbq=True)
+    if has_shower:
+        house_list = house_list.filter(has_shower=True)
+    if has_bath:
+        house_list = house_list.filter(has_bath=True)
+    if capacity:
+        house_list = house_list.filter(capacity__gte=capacity)
     return render(request, 'house_list.html', {'house_list': house_list})
 
 
