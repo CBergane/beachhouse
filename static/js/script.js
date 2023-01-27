@@ -136,7 +136,7 @@ $('#confirmDeleteModal').on('show.bs.modal', function (event) {
     modal.find('.modal-footer #confirmDeleteButton').attr("href", 'delete_view/' + id);
   });
 
-if(document.getElementById('filter_house')){
+if(document.getElementById('index')){
     let bg = document.getElementById('bg');
     let water = document.getElementById('water');
     let text = document.getElementById('text');

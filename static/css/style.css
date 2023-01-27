@@ -23,7 +23,7 @@ body {
 }
 
 /* Horizontal form layout */
-.form-group {
+.form {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
