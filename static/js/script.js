@@ -136,45 +136,43 @@ $('#confirmDeleteModal').on('show.bs.modal', function (event) {
     modal.find('.modal-footer #confirmDeleteButton').attr("href", 'delete_view/' + id);
   });
 
-const faders = document.querySelectorAll('.fade-in');
-const apperOptions = {
-  threshold: 1,
-  rootMargin: '0px 0px -100px 0px'
-};
-const apperOnScroll = new IntersectionObserver(
-  function(
-      entries,
-      apperOnScroll)
-      {
-          entries.forEach(entries => {
-              if (!entries.isIntersecting) {
-                  return;
-              } else{
-                  entries.target.classList.add('appear');
-                  apperOnScroll.unobserve(entries.target);
-              }
-          })
-      },
-      apperOptions);
-      faders.forEach(fader => {
-          apperOnScroll.observe(fader)
-      })
+if(document.getElementById('filter_house')){
+    let bg = document.getElementById('bg');
+    let water = document.getElementById('water');
+    let text = document.getElementById('text');
 
-let bg = document.getElementById('bg');
-let water = document.getElementById('water');
-let text = document.getElementById('text');
+    window.addEventListener('scroll', function() {
+        let value = window.scrollY;
+        bg.style.top = value * 0.4 + 'px'
+        water.style.top = value * 0.1 + 'px'
+        text.style.top = value * 0.7 + 'px'
+    });
+}
 
-window.addEventListener('scroll', function() {
-    let value = window.scrollY;
-    bg.style.top = value * 0.4 + 'px'
-    water.style.top = value * 0.1 + 'px'
-    text.style.top = value * 0.7 + 'px'
-})
+if(document.getElementById('list_house')) {
+    const faders = document.querySelectorAll('.fade-in');
+    const apperOptions = {
+    threshold: 1,
+    rootMargin: '0px 0px -100px 0px'
+    };
+    const apperOnScroll = new IntersectionObserver(
+    function(
+        entries,
+        apperOnScroll
+        ){
+            entries.forEach(entries => {
+                if (!entries.isIntersecting) {
+                    return;
+                } else{
+                    entries.target.classList.add('appear');
+                    apperOnScroll.unobserve(entries.target);
+                }
+            });
+        },
+        apperOptions);
 
-$(document).ready(function() {
-    if ($("form").attr("action")) {
-        $('html, body').animate({
-            scrollTop: $("#result").offset().top
-        }, 100);
-    }
-});
+        faders.forEach(fader => {
+            apperOnScroll.observe(fader);
+        });
+    };
+
