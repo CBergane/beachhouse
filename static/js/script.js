@@ -153,7 +153,7 @@ if(document.getElementById('list_house')) {
     const faders = document.querySelectorAll('.fade-in');
     const apperOptions = {
     threshold: 1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -10px 0px'
     };
     const apperOnScroll = new IntersectionObserver(
     function(

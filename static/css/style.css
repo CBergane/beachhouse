@@ -20,24 +20,13 @@ body {
 
 .fade-in.appear {
     opacity: 1;
+    transition: opacity 600ms ease-in;
 }
-
-/* Horizontal form layout */
-.form {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
   
-  /* Smaller form-control */
-  .small-select {
-    width: 80px;
-  }
-  
-  /* Align labels and form controls horizontally */
-  label {
+/* Align labels */
+label {
     margin-right: 10px;
-  }
+}
 
 /* Colors */
 body {

@@ -10,11 +10,11 @@
                 <button class="btn btn-outline-secondary btn-sm" type="reset" onclick="resetForm()">Reset</button>
                 <div class="collapse" id="collapse">
                     <div>
-                        <form class="form-group form" id="filterForm">
+                        <form class="form-group" id="filterForm">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-select" id="beds" name="beds">
+                                        <select class="form-select small-select" id="beds" name="beds">
                                             <option selected value="">All</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -25,7 +25,7 @@
                                         <label for="beds">Number of Beds</label>
                                     </div>
                                     <div class="form-floating">
-                                        <select class="form-select" id="capacity" name="capacity">
+                                        <select class="form-select small-select" id="capacity" name="capacity">
                                             <option value="">All</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -36,59 +36,63 @@
                                         <label for="capacity">Minimum Capacity</label>
                                     </div>
                                 </div>
+                                    <div class="form-group d-flex">
+                                        <label>Comfort</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="has_wifi" id="has_wifi" value="true">
+                                            <label class="form-check-label" for="has_wifi">WiFi</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="has_tv" id="has_tv" value="true">
+                                            <label class="form-check-label" for="has_tv">TV</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="has_bbq" id="has_bbq" value="true">
+                                            <label class="form-check-label" for="has_bbq">BBQ</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="has_shower" id="has_shower" value="true">
+                                            <label class="form-check-label" for="has_shower">Shower</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="has_bath" id="has_bath" value="true">
+                                            <label class="form-check-label" for="has_bath">Bath</label>
+                                        </div>
+                                    </div>
                                 <div class="form-group">
-                                    <label>Comfort</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="has_wifi" id="has_wifi" value="true">
-                                        <label class="form-check-label" for="has_wifi">WiFi</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="has_tv" id="has_tv" value="true">
-                                        <label class="form-check-label" for="has_tv">TV</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="has_bbq" id="has_bbq" value="true">
-                                        <label class="form-check-label" for="has_bbq">BBQ</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="has_shower" id="has_shower" value="true">
-                                        <label class="form-check-label" for="has_shower">Shower</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="has_bath" id="has_bath" value="true">
-                                        <label class="form-check-label" for="has_bath">Bath</label>
-                                    </div>
-                                </div>
-                                <div class="form-group text-center">
                                     <input class="btn btn-outline-success btn-sm" type="submit" value="Apply">
-                                   
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
         {% for houses in house_list %}
         {% if houses.approved %}
-        <div class="col-lg-4 mb-3 d-flex">
-            <div class="card shadow fade-in" style="width: 25rem;">
-                <img src="{{ houses.house_image.url }}" class="card-img-top img-fluid" alt="Card Image">
-                    <div class="card-body d-flex flex-column">
-                    
-                    <h5 class="card-title">{{houses}} </h5>
-                    <p class="card-text mb-4">{{houses.description}}</p>
-                    
-                    </div>
-                {% if user.is_authenticated %}
-                <a href="{% url 'add-booking' houses.id %}" class="btn btn-outline-success">Book This House</a>
-                {% endif %}
-                {% if user.is_staff %}
-                <a href="{% url 'house-update' houses.id %}" class="btn btn-outline-secondary">Update house</a>
-                {% endif %}
+        
+            <div class="col-md-4 d-flex">
+                <div class="card shadow fade-in" style="width: 25rem;">
+                    <img src="{{ houses.house_image.url }}" class="card-img-top img-fluid" alt="Card Image">
+                        <div class="card-body d-flex flex-column">
+                        
+                        <h5 class="card-title">{{houses}} </h5>
+                        <p class="card-text mb-4">{{houses.description}}</p>
+                        
+                        </div>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'add-booking' houses.id %}" class="btn btn-outline-success">Book This House</a>
+                    {% endif %}
+                    {% if user.is_staff %}
+                    <a href="{% url 'house-update' houses.id %}" class="btn btn-outline-secondary">Update house</a>
+                    {% endif %}
+                </div>
             </div>
-        </div>
+        
         {% endif %}
         {% endfor %}
+    </div>
     </div>
 </div>
    
