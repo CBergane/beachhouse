@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import Bookings, House
 from django.core.exceptions import ValidationError
+from allauth.account.forms import SignupForm
 from django.utils import timezone
 from django.core import validators
 
@@ -180,3 +181,56 @@ class HouseSearchForm(forms.ModelForm):
                 'class': 'form-check-input',
                 }),
         }
+
+
+class CustomSignupForm(SignupForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # here you can change the fields
+        self.fields['username'] = forms.CharField(
+            max_length=30, widget=forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Username',
+                }))
+        self.fields['email'] = forms.EmailField(
+            label='Email Address', required=True, widget=forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Email address',
+                    'autofocus': 'autofocus',
+                }))
+        self.fields['first_name'] = forms.CharField(
+            max_length=30, label='First Name', required=True,
+            widget=forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }))
+        self.fields['last_name'] = forms.CharField(
+            max_length=30, label='Last Name', required=True,
+            widget=forms.TextInput(
+                attrs={
+                    'class': 'form-control'
+                }))
+        self.fields['password1'] = forms.CharField(
+            label='Password',
+            widget=forms.PasswordInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            ))
+        self.fields['password2'] = forms.CharField(
+            label='Password(again)',
+            widget=forms.PasswordInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            ))
+
+    def save(self, request):
+        user = super(CustomSignupForm, self).save(request)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.save()
+        return user
