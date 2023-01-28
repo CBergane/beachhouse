@@ -15,9 +15,32 @@
 </head>
 <body>
     {% include 'includes/navbar.html' %}
-          
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+            {% load i18n %}
+      <div class="modal-body">
+        <p>{% trans 'Are you sure you want to sign out?' %}</p>
+          <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-outline-danger btn-sm" type="submit">{% trans 'Sign Out' %}</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
             {% block content %}
-
             {% endblock %}
 
     {% include 'includes/footer.html' %}

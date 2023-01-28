@@ -13,7 +13,10 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-logout" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                       Logout
+                    </button>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'BookingList' %}">Profile</a>

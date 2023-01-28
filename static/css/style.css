@@ -47,6 +47,10 @@ body {
     padding: 0;
 }
 
+.btn-logout{
+    color: #CEE1E8;
+}
+
 .nav-item:hover,
 .link:hover{
     background-color: #E75A0D;
