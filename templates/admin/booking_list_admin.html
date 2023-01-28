@@ -68,12 +68,12 @@
                         </div>
                         {% endif %}
                       </td>
-                      <td><a href="{{ house.get_absolute_url }}">{{ house }}</a></td>
+                      <td><a class="btn btn-outline-success btn-sm" href="{{ house.get_absolute_url }}">{{ house }}</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <button class="btn btn-outline-secondary" type="submit">Update</button>
+            <button class="btn btn-outline-secondary btn-sm" type="submit">Update</button>
         </div>
     </div>
 </div>
