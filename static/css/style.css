@@ -47,23 +47,10 @@ body {
     padding: 0;
 }
 
+/* custom button  */
 .btn-logout{
     color: #CEE1E8;
     padding: 0;
-}
-
-.nav-item:hover,
-.link:hover{
-    background-color: #E75A0D;
-    transition: ease-in;
-    transition: 0.4s;
-}
-
-.footer {
-    height: 85px;
-    width: 100%;
-    padding-top: 0;
-    overflow: auto;
 }
 
 .btn-outline-success{
@@ -80,6 +67,20 @@ body {
 .btn-outline-success:visited{
     background-color:#0D9FBE !important;
     border-color: #0D9FBE !important;
+}
+
+.nav-item:hover,
+.link:hover{
+    background-color: #E75A0D;
+    transition: ease-in;
+    transition: 0.4s;
+}
+/* Footer */
+.footer {
+    height: 85px;
+    width: 100%;
+    padding-top: 0;
+    overflow: auto;
 }
 
 /* Paralax hero */
@@ -120,16 +121,6 @@ section img {
     object-fit: cover;
     pointer-events: none;
 }
-
-@media screen and (max-width: 900px) {
-    section {
-      flex-direction: column;
-      height: 85vh;
-    }
-    .hero{
-        height: 24vh;
-    }
-  }
 
   /* Map div */
 div#map {
@@ -221,6 +212,7 @@ div#map {
     object-fit: cover;
 }
 
+/* resizing at the breakpoint */
 @media screen and (max-width: 600px) {
     .card-img-top {
         width: 100%;
@@ -232,3 +224,13 @@ div#map {
         min-height: 620px;
     }
 }
+
+@media screen and (max-width: 900px) {
+    section {
+      flex-direction: column;
+      height: 85vh;
+    }
+    .hero{
+        height: 30vh;
+    }
+  }
