@@ -9,14 +9,15 @@ import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-class Owner(models.Model):
-    fname = models.CharField('Owner First Name', max_length=20)
-    lname = models.CharField('Owner Last Name', max_length=20)
+class Message(models.Model):
+    fname = models.CharField('First Name', max_length=20)
+    lname = models.CharField('Last Name', max_length=20)
     email = models.EmailField(('Email Adress'))
-    phone = models.CharField('Contact Phone', max_length=15)
+    phone = models.CharField('Phone number', max_length=15)
+    message = models.CharField('Message', max_length=300, blank=False)
 
     def __str__(self):
-        return self.fname + ' ' + self.lname
+        return self.message
 
 
 class House(models.Model):
