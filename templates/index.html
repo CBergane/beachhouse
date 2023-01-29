@@ -10,7 +10,7 @@
         </section>
     <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div id="about-us">
                 <h1>About Us</h1>
                 <p>Our platform is a community-driven marketplace for summer house rentals. We believe in empowering homeowners to rent out their properties when they want and giving renters access to unique and affordable vacation homes.</p>
@@ -19,12 +19,40 @@
                 <p>Thank you for choosing our platform, and we hope you have a great experience with us!</p>
             </div>
         </div>
-        <div class="col-md-4">
-            <p>hello</p>
-            <div id="map">
-                
-            </div>
+        <div class="col-md-4 gy-5">
+
+            <div id="map"></div>
         </div>
+        <div class="col-md-4">
+            <h2 class="text-center mb-5">Visit Us</h2>
+                <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-map-marker-alt fa-2x mr-2"></i>
+                    <p>1234 Main Street<br>City, State 12345</p>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-phone fa-2x mr-2"></i>
+                    <p>(123) 456-7890</p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-envelope fa-2x mr-2"></i>
+                    <p>info@example.com</p>
+                </div>
+                <h2 class="text-center mb-2">Contact Us</h2>
+                <form>
+                    <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success btn-sm">Submit</button>
+                </form>
     </div>
 </div>
 {% endblock %}
