@@ -54,4 +54,8 @@ urlpatterns = [
         'house/<int:pk>',
         views.house_detail,
         name='house-detail'),
+    path(
+        'message_delete/<message_id>',
+        login_required(views.message_delete),
+        name='message-delete'),
         ]
