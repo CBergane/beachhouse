@@ -8,8 +8,8 @@ from django.views.generic import ListView, View
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
-from .models import House, Bookings
-from .forms import BookingForm, HouseForm, HouseSearchForm
+from .models import House, Bookings, Message
+from .forms import BookingForm, HouseForm, HouseSearchForm, ContactForm
 from beachhouse.booking.booking_function import check_availability
 
 
@@ -19,9 +19,17 @@ def base(request):
 
 def index(request):
     '''
-    Renders the main page/home page
+    Renders the main page/home page and a contact form
     '''
-    return render(request, 'index.html', {})
+    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            messages.success(request, 'Your message has been sent.')
+            message = form.save()
+        else:
+            messages.error(request, 'Your message was not sent.')
+    return render(request, 'index.html', {'form': form})
 
 
 def house_list(request):
@@ -219,7 +227,7 @@ def bookings_delete(request, bookings_id):
 
 def add_house(request):
     '''
-    If user has staff acces they can add houses
+    Users can add houses
     '''
     submitted = False
     if request.method == 'POST':
@@ -267,6 +275,8 @@ def booking_list_admin(
     request, year=datetime.now().year,
     month=datetime.now().strftime('%B')
         ):
+    message = Message.objects.all()
+    num_messages = Message.objects.count()
     if request.user.is_superuser:
         month = month.capitalize()
         # converting month to numbers
@@ -314,6 +324,8 @@ def booking_list_admin(
                 'booking_list': booking_list,
                 'house_list': house_list,
                 'now': now,
+                'message': message,
+                'num_messages': num_messages,
                 })
 
         if request.method == 'POST':
@@ -337,6 +349,8 @@ def booking_list_admin(
                 'booking_list': booking_list,
                 'house_list': house_list,
                 'now': now,
+                'message': message,
+                'num_messages': num_messages,
             })
         return render(request, 'admin/booking_list_admin.html', {
             'year': year,
@@ -347,10 +361,23 @@ def booking_list_admin(
             'booking_list': booking_list,
             'house_list': house_list,
             'now': now,
+            'message': message,
+            'num_messages': num_messages,
         })
     else:
         messages.success(request, "You don't have acces to this page")
         return redirect('home')
+
+
+def message_delete(request, message_id):
+    '''
+    Delete a message
+    '''
+    message = Message.objects.get(pk=message_id)
+    if request.user.is_staff:
+        message.delete()
+        messages.success(request, ('The message has been deleted'))
+    return redirect('bookinglistadmin')
 
 
 def checkout_booking(request, bookings_id):
