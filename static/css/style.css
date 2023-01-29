@@ -49,6 +49,7 @@ body {
 
 .btn-logout{
     color: #CEE1E8;
+    padding: 0;
 }
 
 .nav-item:hover,
