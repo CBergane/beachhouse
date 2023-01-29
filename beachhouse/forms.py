@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Bookings, House
+from .models import Bookings, House, Message
 from django.core.exceptions import ValidationError
 from allauth.account.forms import SignupForm
 from django.utils import timezone
@@ -187,7 +187,6 @@ class CustomSignupForm(SignupForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # here you can change the fields
         self.fields['username'] = forms.CharField(
             max_length=30, widget=forms.TextInput(
                 attrs={
@@ -234,3 +233,48 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         return user
+
+
+class ContactForm(forms.ModelForm):
+
+    class Meta:
+        model = Message
+
+        fields = (
+            'fname',
+            'lname',
+            'email',
+            'phone',
+            'message'
+            )
+
+        lables = {
+            'fname': 'First Name',
+            'lname': 'Last Name',
+            'email': 'E-mail',
+            'phone': 'Phonenumber',
+            'message': 'Message',
+        }
+
+        widgets = {
+            'fname': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'First Name',
+                }),
+            'lname': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Last Name',
+                }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'E-mail',
+                }),
+            'phone': forms.NumberInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Phone-number',
+                }),
+            'message': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Message',
+                }),
+        }
