@@ -19,33 +19,9 @@ def base(request):
 
 def index(request):
     '''
-    Function to seartch the houses depending on inventory
+    Renders the main page/home page
     '''
-    form = HouseSearchForm(request.GET or None)
-    houses = House.objects.all()
-    if form.is_valid():
-        bed_size = form.cleaned_data.get('bed_size')
-        has_wifi = form.cleaned_data.get('has_wifi')
-        has_tv = form.cleaned_data.get('has_tv')
-        has_bbq = form.cleaned_data.get('has_bbq')
-        has_shower = form.cleaned_data.get('has_shower')
-        has_bath = form.cleaned_data.get('has_bath')
-        capacity = form.cleaned_data.get('capacity')
-        if bed_size:
-            houses = houses.filter(bed_size=bed_size)
-        if has_wifi:
-            houses = houses.filter(has_wifi=True)
-        if has_tv:
-            houses = houses.filter(has_tv=True)
-        if has_bbq:
-            houses = houses.filter(has_bbq=True)
-        if has_shower:
-            houses = houses.filter(has_shower=True)
-        if has_bath:
-            houses = houses.filter(has_bath=True)
-        if capacity:
-            houses = houses.filter(capacity__gte=capacity)
-    return render(request, 'index.html', {'form': form, 'houses': houses})
+    return render(request, 'index.html', {})
 
 
 def house_list(request):
