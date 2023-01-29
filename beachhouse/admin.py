@@ -1,8 +1,6 @@
 from django.contrib import admin
-from .models import Bookings, House, Owner
+from .models import Bookings, House, Message
 
-
-admin.site.register(Owner)
 
 # custum made admin outlook
 
@@ -20,3 +18,8 @@ class BookingAdmin(admin.ModelAdmin):
     list_display = ('user', 'checkin', 'checkout')
     list_filter = ('checkin', 'house')
     ordering = ('checkin',)
+
+
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    fields = (('fname', 'lname', 'email', 'phone', 'message'))
