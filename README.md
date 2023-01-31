@@ -73,3 +73,16 @@ Visit the deployed site [here](https://airbnbbeachhouse.herokuapp.com/index).
 
 * As a Site User, I want to manage the content I created.
 
+
+#### Strategy Table
+
+Strategy | Description |
+--- | --- | 
+User signups | Make it easy for users to signup to the page. |
+An easy way for users to display their houses for new custumers | Offer better tools for property owners to list and showcase their properties, encourage more detailed and attractive listings. |
+Enhance guest experience | Streamline the booking and check-in process. |
+Have a responsive design | Make the content responsive on smaler divices. |
+
+
+### Scope
+
