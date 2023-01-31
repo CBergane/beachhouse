@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Bookings, House, Message
+from .models import Bookings, House, Contact
 from django.core.exceptions import ValidationError
 from allauth.account.forms import SignupForm
 from django.utils import timezone
@@ -238,7 +238,7 @@ class CustomSignupForm(SignupForm):
 class ContactForm(forms.ModelForm):
 
     class Meta:
-        model = Message
+        model = Contact
 
         fields = (
             'fname',
