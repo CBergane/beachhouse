@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bookings, House, Message
+from .models import Bookings, House, Contact
 
 
 # custum made admin outlook
@@ -20,6 +20,6 @@ class BookingAdmin(admin.ModelAdmin):
     ordering = ('checkin',)
 
 
-@admin.register(Message)
+@admin.register(Contact)
 class MessageAdmin(admin.ModelAdmin):
     fields = (('fname', 'lname', 'email', 'phone', 'message'))
