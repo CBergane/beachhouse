@@ -50,11 +50,11 @@
 <!-- my own javascripts link -->
 <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 <script>
-  setTimeout(function () {
-    let messages = document.getElementById("msg");
-    let alert = new bootstrap.Alert(messages);
-    alert.close();
-    }, 3000);
+  setTimeout(() => {
+    const messages = document.getElementById("msg");
+    const alert = new bootstrap.Alert(messages);
+    alert.dispose();
+  }, 3000);
 </script>
 </body>
 </html>
