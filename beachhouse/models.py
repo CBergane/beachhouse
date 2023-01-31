@@ -9,7 +9,7 @@ import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
-class Message(models.Model):
+class Contact(models.Model):
     fname = models.CharField('First Name', max_length=20)
     lname = models.CharField('Last Name', max_length=20)
     email = models.EmailField(('Email Adress'))
