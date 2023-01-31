@@ -8,7 +8,7 @@ from django.views.generic import ListView, View
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
-from .models import House, Bookings, Message
+from .models import House, Bookings, Contact
 from .forms import BookingForm, HouseForm, HouseSearchForm, ContactForm
 from beachhouse.booking.booking_function import check_availability
 
@@ -275,8 +275,8 @@ def booking_list_admin(
     request, year=datetime.now().year,
     month=datetime.now().strftime('%B')
         ):
-    message = Message.objects.all()
-    num_messages = Message.objects.count()
+    message = Contact.objects.all()
+    num_messages = Contact.objects.count()
     if request.user.is_superuser:
         month = month.capitalize()
         # converting month to numbers
@@ -373,8 +373,8 @@ def message_delete(request, message_id):
     '''
     Delete a message
     '''
-    message = Message.objects.get(pk=message_id)
     if request.user.is_staff:
+        message = Contact.objects.get(pk=message_id)
         message.delete()
         messages.success(request, ('The message has been deleted'))
     return redirect('bookinglistadmin')
