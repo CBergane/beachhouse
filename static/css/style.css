@@ -50,7 +50,6 @@ body {
 /* custom button  */
 .btn-logout{
     color: #CEE1E8;
-    padding: 0;
 }
 
 .btn-outline-success{
@@ -223,6 +222,9 @@ div#map {
         max-width: 450px;
         min-height: 620px;
     }
+    .btn-logout{
+        padding: 0;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -232,5 +234,8 @@ div#map {
     }
     .hero{
         height: 30vh;
+    }
+    .btn-logout{
+        padding: 0;
     }
   }
