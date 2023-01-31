@@ -66,6 +66,7 @@
                       <th scope="row">House</th>
                       <th scope="row">Location</th>
                       <th scope="row">Price per night</th>
+                      <th scope="row">Update house</th>
                   </tr>
               </thead>
               <tbody>
@@ -74,6 +75,7 @@
                       <td>{{ house.name }}</td>
                       <td>{{ house.adress }}</td>
                       <td>{{ house.price }}</td>
+                      <td><a href="{% url 'house-update' house.id %}" class="btn btn-outline-secondary btn-sm">Update house</a></td>
                   </tr>
                   {% endfor %}
               </tbody>
