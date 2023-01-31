@@ -28,7 +28,7 @@
                     <td>{{booking.checkin|date:"d F Y"}} untill {{booking.checkout|date:"d F Y"}}</td>
                     <td>
                         {% if booking.checkout.date <= now.date %}
-                        <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#checkoutModal">Delete</a>
+                        <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#checkoutModal">Check out</a>
                         {% endif %}
                     </td>
                 </tr>
@@ -36,7 +36,7 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="checkoutModalLabel">Confirm Deletion</h5>
+                          <h5 class="modal-title" id="checkoutModalLabel">Confirm Check Out</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -92,27 +92,35 @@
             </table>
             <button class="btn btn-outline-secondary btn-sm" type="submit">Update</button>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h2>Messages</h2>
             <h5>Number of messages: {{ num_messages }}</h5>
             <hr>
             {% if message %}
-                <ul class="messages list-group list-group-flush">
-                    {% for messages in message %}
-                        <li class="list-group-item list-group-item-action">
-                            <p>Name: {{messages.fname}} {{messages.lname}}</p>
-                            <p>Email: {{messages.email}}</p>
-                            <p>Phone: {{messages.phone}}</p>
-                            <p>Message: {{messages}}</p>
-                            <td>
-                                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">Check out</a>
-                            </td>
-                        </li>
-                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">From</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for messages in message %}
+                  <tr>
+                    <td>{{messages.fname}} {{messages.lname}}</td>
+                    <td>{{messages.email}}</td>
+                    <td>{{messages.phone}}</td>
+                    <td>{{messages}}</td>
+                    <td><a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ messages.id }}">Delete</a></td>
+                  </tr>
+                        <div class="modal fade" id="deleteModal-{{ messages.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="deleteModalLabel">Confirm Check Out</h5>
+                                  <h5 class="modal-title" id="deleteModalLabel">Confirm Delete Message</h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -126,7 +134,7 @@
                             </div>
                           </div>
                     {% endfor %}
-                </ul>
+              </tbody>
             {% endif %}
         </div>
     </div>
