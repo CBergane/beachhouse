@@ -1,6 +1,6 @@
 # Beach House!
 
-[add a mockupp here]
+![Beach house mockup image](readme/media/mockup.jpg)
 
 Beach House is a mock site for a communety that wishes to rent out their summer houses to guets.
 The main fokus of the site is an easy way for the guests to get an overview of what kind of properties there is to rent, the guest can filter from a list of options to get a more spesific house to rent.
