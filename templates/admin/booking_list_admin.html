@@ -13,7 +13,7 @@
             <a class="btn btn-outline-secondary" href="?prev=true&month={{ month }}&year={{ year }}">Previous Month</a>
             <a class="btn btn-outline-secondary" href="?next=true&month={{ month }}&year={{ year }}">Next Month</a>
             {% if booking_list %}
-            <table class="table table-hover mb-0">
+            <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">Who has booked</th>
@@ -29,7 +29,6 @@
                     <td>
                         {% if booking.checkout.date <= now.date %}
                         <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#checkoutModal">Delete</a>
-                        <!-- <a href="{% url 'bookings-checkout' booking.id %}" class="btn btn-outline-danger btn-sm">Checkout</a> -->
                         {% endif %}
                     </td>
                 </tr>
@@ -64,7 +63,7 @@
             <form action="" method=POST>
                 {% csrf_token %}
             
-            <table class="table table-hover table-border">
+            <table class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">House Name</th>
@@ -127,7 +126,6 @@
                             </div>
                           </div>
                     {% endfor %}
-                    
                 </ul>
             {% endif %}
         </div>
