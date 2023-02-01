@@ -6,6 +6,7 @@ if(checkInDate && checkOutDate && bookButton){
     checkInDate.addEventListener("change", checkDates);
     checkOutDate.addEventListener("change", checkDates);
     checkDates();
+}
     function checkDates() {
         // Get the current date
         const currentDate = new Date();
@@ -25,10 +26,10 @@ if(checkInDate && checkOutDate && bookButton){
         } else {
             // If the check-in and check-out dates are in the future, enable the book button
             bookButton.disabled = false;
-            bookButton.value = "Book"
+            bookButton.value = "Book";
         }
     }
-}
+
 
 // A funcktion to make sure the user wont be able to change to check in and out in the past
 if(document.getElementById('update_booking')) {
@@ -39,7 +40,7 @@ if(document.getElementById('update_booking')) {
         checkInDate.addEventListener("change", checkDates);
         checkOutDate.addEventListener("change", checkDates);
         checkDates();
-        function checkDates() {
+        (function checkDates() {
             // Get the current date
             const currentDate = new Date();
             // Get the check-in date from the input
@@ -58,25 +59,22 @@ if(document.getElementById('update_booking')) {
             } else {
                 // If the check-in and check-out dates are in the future, enable the book button
                 bookButton.disabled = false;
-                bookButton.value = "Update"
+                bookButton.value = "Update";
             }
-        }
+        })();        
     }
 }
 
 // a go back one page function
-
 $(document).ready(function() {
     $('.btn-back').click(function() {
         window.history.back();
-    })
-})
+    });
+});
 
 // add a function to calculate the price in real time
-
-// const price = document.getElementById("price");
 if(document.getElementById('price')){
-    function calculateTotalPrice() {
+    (function calculateTotalPrice() {
         let checkInDate = new Date(document.getElementById("id_checkin").value);
         let checkOutDate = new Date(document.getElementById("id_checkout").value);
         let housePrice = document.getElementById("price").innerHTML;
@@ -84,7 +82,7 @@ if(document.getElementById('price')){
         let diffDays = Math.round(Math.abs((checkOutDate.getTime() - checkInDate.getTime())/(oneDay)));
         let totalCost = diffDays * housePrice;
         document.getElementById("total_cost").innerHTML = totalCost;
-    }
+    })();
 
     document.getElementById("id_checkin").addEventListener("change", calculateTotalPrice);
     document.getElementById("id_checkout").addEventListener("change", calculateTotalPrice);
@@ -115,7 +113,7 @@ if(document.getElementById('add_house')) {
         valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
     });
 }
-
+// add a value to the range in the filter house section so you can get a value from the range slider
 if(document.getElementById('filter_house')){
     const rangeInputCapacity = document.getElementById("capacity");
     const valueDisplayCapacity = document.createElement("guests");
@@ -136,6 +134,7 @@ $('#confirmDeleteModal').on('show.bs.modal', function (event) {
     modal.find('.modal-footer #confirmDeleteButton').attr("href", 'delete_view/' + id);
   });
 
+// Adds the the parallax efect of the hero image
 if(document.getElementById('index')){
     let bg = document.getElementById('bg');
     let water = document.getElementById('water');
@@ -143,12 +142,12 @@ if(document.getElementById('index')){
 
     window.addEventListener('scroll', function() {
         let value = window.scrollY;
-        bg.style.top = value * 0.4 + 'px'
-        water.style.top = value * 0.1 + 'px'
-        text.style.top = value * 0.7 + 'px'
+        bg.style.top = value * 0.4 + 'px';
+        water.style.top = value * 0.1 + 'px';
+        text.style.top = value * 0.7 + 'px';
     });
 }
-
+// Help the fade in class in the list house page and lets houses slide in
 if(document.getElementById('list_house')) {
     const faders = document.querySelectorAll('.fade-in');
     const apperOptions = {
@@ -174,8 +173,9 @@ if(document.getElementById('list_house')) {
         faders.forEach(fader => {
             apperOnScroll.observe(fader);
         });
-    };
+    }
 
+// function to reset the filter function
 function resetForm(){
     document.getElementById("beds").value="";
     document.getElementById("capacity").value="";
