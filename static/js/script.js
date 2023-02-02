@@ -77,7 +77,7 @@ if(document.getElementById('price')){
     (function calculateTotalPrice() {
         let checkInDate = new Date(document.getElementById("id_checkin").value);
         let checkOutDate = new Date(document.getElementById("id_checkout").value);
-        let housePrice = document.getElementById("price").innerHTML;
+        let housePrice = parseFloat(document.getElementById("price").innerHTML);
         let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
         let diffDays = Math.round(Math.abs((checkOutDate.getTime() - checkInDate.getTime())/(oneDay)));
         let totalCost = diffDays * housePrice;
