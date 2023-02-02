@@ -73,20 +73,23 @@ $(document).ready(function() {
 });
 
 // add a function to calculate the price in real time
-if(document.getElementById('price')){
-    (function calculateTotalPrice() {
-        let checkInDate = new Date(document.getElementById("id_checkin").value);
-        let checkOutDate = new Date(document.getElementById("id_checkout").value);
-        let housePrice = parseFloat(document.getElementById("price").innerHTML);
-        let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-        let diffDays = Math.round(Math.abs((checkOutDate.getTime() - checkInDate.getTime())/(oneDay)));
-        let totalCost = diffDays * housePrice;
-        document.getElementById("total_cost").innerHTML = totalCost;
-    })();
-
+function calculateTotalPrice() {
+    let checkInDate = new Date(document.getElementById("id_checkin").value);
+    let checkOutDate = new Date(document.getElementById("id_checkout").value);
+    let housePrice = parseFloat(document.getElementById("price").innerHTML);
+    let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+    let diffDays = Math.round(Math.abs((checkOutDate.getTime() - checkInDate.getTime())/(oneDay)));
+    let totalCost = diffDays * housePrice;
+    document.getElementById("total_cost").innerHTML = totalCost;
+  }
+  
+  if(document.getElementById('price')){
+    calculateTotalPrice();
+  
     document.getElementById("id_checkin").addEventListener("change", calculateTotalPrice);
     document.getElementById("id_checkout").addEventListener("change", calculateTotalPrice);
-}
+  }
+  
 
 
 // add a span to the ranges so you can see what value they have
