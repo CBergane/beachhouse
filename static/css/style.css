@@ -22,6 +22,10 @@ body {
     opacity: 1;
     transition: opacity 600ms ease-in;
 }
+
+.top-card {
+    margin-top: 75px;
+}
   
 /* Align labels */
 label {
