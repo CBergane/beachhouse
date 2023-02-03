@@ -4,22 +4,22 @@
 <div class="container square-box d-flex justify-content-center align-items-center" style="background-image: url({{obj.house_image.url}}); background-size: cover; background-repeat: no-repeat; background-position: center center; background-attachment: fixed;">
     <div class="row">
         <div class="col-4">
-        <div class="card booking shadow" style="width: 22rem; background-color: rgba(255, 255, 255, 0.8);">
-            <div class="card-body">
-                <h1>Add a booking to {{obj}} {{user}}</h1>
-                    {% include 'includes/messages.html' %}
-                    <form action="" method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p}}
-                        <input type="hidden" id="house_id" value="{{ house.id }}">
-                        <p class="card-text">Price per night: <span id="price">{{ obj.price }}</span> &#8364;</p>
-                        <p class="card-text">Total cost: <span id="total_cost"></span> &#8364;</p>
-                        <p class="card-text">Owners email: {{ house_owner.email }}</p>
-                        <input type="submit" id="book" value="Book" class="btn btn-outline-success btn-sm">
-                        <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>
-                    </form>
+            <div class="card booking shadow" style="width: 22rem; background-color: rgba(255, 255, 255, 0.8);">
+                <div class="card-body">
+                    <h1>Add a booking to {{obj}} {{user}}</h1>
+                        {% include 'includes/messages.html' %}
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p}}
+                            <input type="hidden" id="house_id" value="{{ house.id }}">
+                            <p class="card-text">Price per night: <span id="price">{{ obj.price }}</span> &#8364;</p>
+                            <p class="card-text">Total cost: <span id="total_cost"></span> &#8364;</p>
+                            <p class="card-text">Owners email: {{ house_owner.email }}</p>
+                            <input type="submit" id="book" value="Book" class="btn btn-outline-success btn-sm">
+                            <span class="btn btn-back btn-outline-secondary btn-sm">Go Back</span>
+                        </form>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </div>
