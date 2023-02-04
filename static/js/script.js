@@ -2,13 +2,10 @@
 const checkInDate = document.getElementById("id_checkin");
 const checkOutDate = document.getElementById("id_checkout");
 const bookButton = document.getElementById("book");
-const updateButton = document.getElementById("update");
 
 if(checkInDate && checkOutDate && bookButton){
     checkInDate.addEventListener("change", checkDates);
     checkOutDate.addEventListener("change", checkDates);
-    bookButton.addEventListener("click", checkDates);
-    updateButton.addEventListener("click", checkDates);
     checkDates();
 }
     function checkDates() {
