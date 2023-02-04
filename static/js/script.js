@@ -12,9 +12,9 @@ if(checkInDate && checkOutDate && bookButton){
         // Get the current date
         const currentDate = new Date();
         // Get the check-in date from the input
-        const checkIn = new Date(checkInDate.value);
+        const checkIn = new Date(checkInDate.value.split(" ")[0]);
         // Get the check-out date from the input
-        const checkOut = new Date(checkOutDate.value);
+        const checkOut = new Date(checkOutDate.value.split(" ")[0]);
         // Compare the check-in date to the current date
         if (checkIn < currentDate) {
             // If the check-in date is in the past, disable the book button
