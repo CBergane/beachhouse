@@ -28,12 +28,12 @@
                     <td>{{booking.checkin|date:"d F Y"}} untill {{booking.checkout|date:"d F Y"}}</td>
                     <td>
                         {% if booking.checkout.date <= now.date %}
-                        <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#checkoutModal">Check out</a>
+                        <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#checkoutModal-{{ booking.id }}">Check out</a>
                         {% endif %}
                     </td>
                 </tr>
                 <!-- modal body for checking out -->
-                <div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModal" aria-hidden="true">
+                <div class="modal fade" id="checkoutModal-{{ booking.id }}" tabindex="-1" role="dialog" aria-labelledby="checkoutModal" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
