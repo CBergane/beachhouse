@@ -86,3 +86,32 @@ Have a responsive design | Make the content responsive on smaler divices. |
 
 ### Scope
 
+Since this is a mock site, there is no actual booking of real houses, but the goal is that I should be able to use it in real life as close to ready to go.
+The purpose of this site is for a community to have a portal for their houses to be rented out for a set price.
+Some of the functions:
+
+* Responsive design.
+* A easy way to sign up.
+* List houses that have been approved by the site admin for display.
+* An easy way for the site admin to see what's going on and control it.
+* An easy way for the owners of the houses to list their house/houses.
+
+#### User Stories
+
+GitHub projects was used as my project management tool to track user stories.
+
+**Start Of The Project**
+
+![User Stories Progress - Start](readme/media/github.com-projects-start.jpg)
+
+**Week 1**
+![User Stories Progress - Week 1](readme/media/github.com-projects-first.jpg)
+
+**Week 2**
+![User Stories Progress - Week 2](readme/media/github.com-projects-middle.jpg)
+
+**Week 3**
+![User Stories Progress - Week 3](readme/media/github.com-projects-last.jpg)
+
+**Week 4**
+![User Stories Progress - Week 4](readme/media/github.com-projects-end.jpg)

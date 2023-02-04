@@ -15,6 +15,10 @@
 </head>
 <body>
     {% include 'includes/navbar.html' %}
+
+      {% block content %}
+
+      {% endblock %}
 <!-- Modal -->
 <div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="logOutModallLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -40,9 +44,6 @@
     </div>
   </div>
 </div>
-            {% block content %}
-            {% endblock %}
-
     {% include 'includes/footer.html' %}
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
