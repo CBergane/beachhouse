@@ -24,7 +24,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="logOutModalLabel"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign out </h1>
+        <h1 class="modal-title fs-5" id="logOutModalLabel"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign out</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
             {% load i18n %}
@@ -33,7 +33,7 @@
           <form method="post" action="{% url 'account_logout' %}">
             {% csrf_token %}
             {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
             {% endif %}
           <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
           <button class="btn btn-outline-danger btn-sm" type="submit">{% trans 'Sign Out' %}</button>
