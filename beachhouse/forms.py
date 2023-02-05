@@ -246,7 +246,6 @@ class ContactForm(forms.ModelForm):
             'fname',
             'lname',
             'email',
-            'phone',
             'message'
             )
 
@@ -254,7 +253,6 @@ class ContactForm(forms.ModelForm):
             'fname': 'First Name',
             'lname': 'Last Name',
             'email': 'E-mail',
-            'phone': 'Phonenumber',
             'message': 'Message',
         }
 
@@ -270,10 +268,6 @@ class ContactForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'E-mail',
-                }),
-            'phone': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Phone-number',
                 }),
             'message': forms.Textarea(attrs={
                 'class': 'form-control',
