@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% include 'includes/messages.html' %}
 <div class="container">
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
             {{cal|safe}}
         </div>
-        {% include 'includes/messages.html' %}
         <div id="booking-list" class="col-md-6 col-sm-6">
             <h2>Uppcoming bookings for {{month}}:</h2>
             <hr>
@@ -55,41 +55,55 @@
             </table>
         </div>
         <div class="col-md-6 col-sm-6">
-            <h2>List of houses:</h2>
-            <hr>
-            <p><small class="text-muted">Check the boxes of the houses you wish to display</small></p>
-            <form action="" method=POST>
-                {% csrf_token %}
-            
-            <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">House Name</th>
-                    <th scope="col">Approved</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    {% for house in house_list %}
-                    <tr>
-                      <td>{{house}}</td>
-                      <td>
-                        {% if house.approved %}
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" checked="checked" value="{{house.id}}" name="boxes">
-                        </div>
-                        {% else %}
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{house.id}}" name="boxes">
-                        </div>
-                        {% endif %}
-                      </td>
-                      <td><a class="btn btn-outline-success btn-sm" href="{{ house.get_absolute_url }}">{{ house }}</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <button class="btn btn-outline-secondary btn-sm" type="submit">Update</button>
-        </div>
+          <h2>List of Houses:</h2>
+          <hr class="mt-2 mb-4">
+      
+          <p class="text-muted small">Check the boxes of the houses you wish to display</p>
+          <form action="" method="post">
+              {% csrf_token %}
+      
+              <table class="table table-hover">
+                  <thead class="thead-light">
+                      <tr>
+                          <th scope="col">House Name</th>
+                          <th scope="col">Approved</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for house in house_list %}
+                      <tr>
+                          <td>{{ house }}</td>
+                          <td>
+                              {% if house.approved %}
+                              <div class="form-check">
+                                  <input
+                                      class="form-check-input"
+                                      type="checkbox"
+                                      checked="checked"
+                                      value="{{ house.id }}"
+                                      name="boxes">
+                              </div>
+                              {% else %}
+                              <div class="form-check">
+                                  <input
+                                      class="form-check-input"
+                                      type="checkbox"
+                                      value="{{ house.id }}"
+                                      name="boxes">
+                              </div>
+                              {% endif %}
+                          </td>
+                          <td>
+                              <a class="btn btn-outline-success btn-sm" href="{{ house.get_absolute_url }}">{{ house }}</a>
+                          </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+              <button class="btn btn-outline-secondary btn-sm" type="submit">Update</button>
+          </form>
+      </div>
+      
         <div class="col-md-6">
           <h2>Messages</h2>
           <h5>Number of messages: {{ num_messages }}</h5>
