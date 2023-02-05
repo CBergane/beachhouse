@@ -14,6 +14,9 @@ from beachhouse.booking.booking_function import check_availability
 
 
 def base(request):
+    '''
+    Base template the holds everything together
+    '''
     return render(request, 'base.html', {})
 
 
@@ -275,6 +278,10 @@ def booking_list_admin(
     request, year=datetime.now().year,
     month=datetime.now().strftime('%B')
         ):
+    '''
+    The admin template where all the bookings are displayed and
+    the messages from the index page ends up at
+    '''
     message = Contact.objects.all()
     num_messages = Contact.objects.count()
     if request.user.is_superuser:
@@ -393,5 +400,8 @@ def checkout_booking(request, bookings_id):
 
 
 def house_detail(request, pk):
+    '''
+    Getting a preview of the houses for the admin
+    '''
     house = get_object_or_404(House, pk=pk)
     return render(request, 'house_detail.html', {'house': house})
