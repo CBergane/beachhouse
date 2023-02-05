@@ -84,11 +84,13 @@ class HouseForm(ModelForm):
                 'class': 'form-check-input',
                 }),
             'bed_size': forms.Select(attrs={
-                'class': 'dropdown-toggle',
+                'class': 'form-select',
+                'style': 'max-width: 200px',
             }),
             'price': forms.NumberInput(attrs={
                 'class': 'form-control',
                 'step': 10,
+                'style': 'max-width: 200px',
                 }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
