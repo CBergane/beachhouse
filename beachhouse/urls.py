@@ -44,7 +44,7 @@ urlpatterns = [
         name='bookinglistadmin'),
     path(
         '<int:year>/<str:month>',
-        views.booking_list_admin,
+        login_required(views.booking_list_admin),
         name='bookinglistadmin'),
     path(
         'bookings_checkout/<bookings_id>',
@@ -52,7 +52,7 @@ urlpatterns = [
         name='bookings-checkout'),
     path(
         'house/<int:pk>',
-        views.house_detail,
+        login_required(views.house_detail),
         name='house-detail'),
     path(
         'message_delete/<message_id>',
