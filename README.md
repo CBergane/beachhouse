@@ -115,3 +115,82 @@ GitHub projects was used as my project management tool to track user stories.
 
 **Week 4**
 ![User Stories Progress - Week 4](readme/media/github.com-projects-end.jpg)
+
+
+### Structure
+
+The website has been organized in a Hierarchical Tree Structure to ensure the site user navigates through the site effortlessly and intuitively. Here you can you can find the website map design.
+
+![beachhouse site map](readme/media/sitemap.png)
+
+**Contact Model**
+
+* fname: A fisrt name must be added to the message.
+* lname: A last name must be added to the conntact form.
+* email: An email addres to let the staff get in contagt with whom ever sent the message.
+* message: A message with a max length of 300 and cant be left blank.
+
+**House Model**
+
+* name: Gives the house a name.
+* adress: Gives a adress to the house so the booker can lokate it.
+* owner: A owner for the house and it can't be left blank.
+* beds: Number of beds that the house contains.
+* capacity: the number of guets that the house will hold.
+* price: Give a price per night.
+* description: The owner diescribes the house but can be left blank.
+* house_image: A picture of the house but there is a default img given be the site if none is given.
+* has_tv: If the house have a tv in the inventory.
+* has_wifi: If the house have wifi in the inventory.
+* has_bbq: If the house have a bbq in the inventory.
+* has_shower: If the house have a shower in the inventory.
+* has_bath: If the house have a bath in the inventory.
+* BED_SIZE_CHOICES: the deferent choices of bed sizes to choose from.
+* bed_size: the choice made be the owner to be displayed for the user.
+* approved: a approved option from the staff/admin to be displayed, set to false so it can be inspected first.
+
+**Booking Model**
+
+* user: Set to whom is loged in as a foreignkey and all bookings made with this user will be deleted if the user is delted.
+* house: Also set to foreignkey and bound to the house, if the house is deleted the bookings on the house will be delted with it.
+* checkin: The checkin date for the house.
+* checkout: The checkout date for the house.
+
+
+### Skeleton
+
+#### Wireframes
+
+[Balsamiq](https://balsamiq.com/) has been used to showcase the appearance of the site and display the placement of the different elements whitin the pages.
+
+Page | Desktop Version/Tablet Version/ Mobile Version
+--- | ---
+Index | ![Wireframe index.html](readme/media/wireframe_index.png)
+House list | ![Wireframe houselist.html](readme/media/wireframe_house_list.png)
+Booking | ![Wireframe booking.html](readme/media/wireframe_booking.png)
+Profile | ![Wireframe profile.html](readme/media/wireframe_profile.png)
+Admin | ![Wireframe admin.html](readme/media/wireframe_admin.png)
+
+### Surface
+
+#### Color Scheme
+
+The colors are were chosen keeping in mind simplicity but also providing the website a modern design. This in order to keep the focus on the content but also appealing for the users.
+
+![Color scheme image](readme/media/color_palette.png)
+
+#### Typography
+
+The main font being used in the site is Poppins, with sans-serif as a fallback in case Poppins doesn't get imported correctly. 
+
+[Back to top ⇧](#beach-house)
+
+## Features
+
+### General
+
+* The website has been designed from a mobile first perspective.
+
+* Responsive design across all device sizes.
+
+* Navigation Bar
