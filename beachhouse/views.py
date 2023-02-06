@@ -3,7 +3,9 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime, timedelta
 from django.db.models import Q
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.http import (
+    HttpResponseRedirect, HttpResponse, JsonResponse, HttpResponseNotFound
+    )
 from django.views.generic import ListView, View
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -405,3 +407,7 @@ def house_detail(request, pk):
     '''
     house = get_object_or_404(House, pk=pk)
     return render(request, 'house_detail.html', {'house': house})
+
+
+def custom_404(request, exception):
+    return render(request, '404.html')
