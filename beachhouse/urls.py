@@ -1,5 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
+from django.conf.urls import handler404
 from . import views
 from .views import BookingList, AddBooking
 
@@ -59,3 +60,6 @@ urlpatterns = [
         login_required(views.message_delete),
         name='message-delete'),
         ]
+
+
+handler404 = 'beachhouse.views.custom_404'
