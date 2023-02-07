@@ -78,6 +78,14 @@ body {
     transition: ease-in;
     transition: 0.4s;
 }
+
+/* navbar logo */
+
+.logo {
+    height: 40px;
+    border-radius: 50%;
+}
+
 /* Footer */
 .footer {
     height: 85px;
