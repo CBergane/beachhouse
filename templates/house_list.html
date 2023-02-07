@@ -72,7 +72,11 @@
                 {% if houses.approved %}
             <div class="col-lg-4 col-md-6 d-flex">
                 <div class="card shadow fade-in" style="width: 25rem;">
+                    {% if "placeholder" in houses.house_image.url %}
+                    <img src="https://res.cloudinary.com/dzdgvkurl/image/upload/v1675786699/zane-lee-j6Vlio3BWd8-unsplash_hrsles.jpg" width="100%">
+                    {% else %}
                     <img src="{{ houses.house_image.url }}" class="card-img-top img-fluid" alt="Card Image">
+                    {% endif %}
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{houses}} </h5>
                             <p class="card-text mb-4">{{houses.description}}</p>
