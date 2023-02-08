@@ -20,12 +20,13 @@
                   </div>
                   <div class="card-body">
                     <p class="card-text">{{booking.checkin|date:"d F Y"}} untill {{booking.checkout|date:"d F Y"}}</p>
-                    <p class="card-text"></p>
-                    <p class="card-text"></p>
-                  </div>
-                  {% if booking.checkout.date <= now.date %}
+                    <p class="card-text">
+                      {% if booking.checkout.date <= now.date %}
                     <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" aria-label="Check out" data-bs-target="#checkoutModal-{{ booking.id }}">Check out</a>
-                  {% endif %}
+                      {% endif %}
+                    </p>
+                  </div>
+                  
                 </div>
                 
                 <!-- modal body for checking out -->
