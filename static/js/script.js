@@ -66,7 +66,7 @@ if(document.getElementById('update_booking')) {
     }
 }
 
-if(document.getElementById('btn-back')) {
+if(document.getElementsByClassName('btn-back')) {
     // a go back one page function
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.btn-back').addEventListener('click', function() {
