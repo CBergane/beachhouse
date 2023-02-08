@@ -67,11 +67,11 @@ if(document.getElementById('update_booking')) {
 }
 
 // a go back one page function
-$(document).ready(function() {
-    $('.btn-back').click(function() {
-        window.history.back();
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector('.btn-back').addEventListener('click', function() {
+    window.history.back();
     });
-});
+    });
 
 // add a function to calculate the price in real time
 function calculateTotalPrice() {
@@ -130,13 +130,6 @@ if(document.getElementById('filter_house')){
         valueDisplayCapacity.style.left = rangeInputCapacity.value + "%";
     });
 }
-
-$('#confirmDeleteModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget);
-    var id = button.data('id');
-    var modal = $(this);
-    modal.find('.modal-footer #confirmDeleteButton').attr("href", 'delete_view/' + id);
-  });
 
 // Adds the the parallax efect of the hero image
 if(document.getElementById('index')){
