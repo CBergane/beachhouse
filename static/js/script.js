@@ -66,12 +66,14 @@ if(document.getElementById('update_booking')) {
     }
 }
 
-// a go back one page function
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector('.btn-back').addEventListener('click', function() {
-    window.history.back();
-    });
-    });
+if(document.getElementById('btn-back')) {
+    // a go back one page function
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector('.btn-back').addEventListener('click', function() {
+        window.history.back();
+        });
+        });
+    }
 
 // add a function to calculate the price in real time
 function calculateTotalPrice() {
