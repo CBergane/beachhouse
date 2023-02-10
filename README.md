@@ -24,6 +24,9 @@ Visit the deployed site [here](https://airbnbbeachhouse.herokuapp.com/index).
 2. [Features](#features)
     1. [General](#general)
     2. [Home Page](#home-page)
+    3. [Profile](#profile)
+    4. [Our Houses](#our-houses)
+    5. [Admin](#admin)
 3. [Technologies Used](#technologies-used)
     1. [Languages Used](#languages-used)
     2. [Libraries and Frameworks](#languages-and-frameworks)
@@ -242,13 +245,12 @@ The main font being used in the site is Poppins, with sans-serif as a fallback i
 ![Booking](readme/media/add-booking.png)
 
 ### Admin
+* The admin page contains a calendar, a list of all the bookings for all houses. A list of houses to approve and a Link to get a preview of the card with an inventory list and a list of messages sent from index.html.
 
-* The admin page contains a calendar, a list of all the bookings for all houses. A list of houses to approve and a link to get a preview of the card with an inventory list, and a list of messages that has been sent from index.html.
-
-    * The calendar changes with the mounts as they go by to have an overlook.
+    * The calendar change house bookings to have an overlook.
     * The booking list contains a checkout function that activates if the checkout day is that day or in the past. You can also click between months.
     * The approving list contains a button to get you to the preview page.
-    * The messages have a counter and the messages can be deleted as you are done with them.
+    * The messages have a counter and can be deleted as you are done with them.
 
 ![Admin](readme/media/bookinglistadmin.png)
 ![House preview](readme/media/house-preview.png)
@@ -348,6 +350,8 @@ The main font being used in the site is Poppins, with sans-serif as a fallback i
 
 ## Testing
 
+The testing documentation can be found [here](https://github.com/CBergane/beachhouse/blob/main/TESTING.md#beach-house-testing).
+
 [Back to top ⇧](#beach-house)
 
 ## Deployment
@@ -427,6 +431,24 @@ Further reading and troubleshooting on cloning a repository from GitHub [here](h
 [Back to top ⇧](#beach-house)
 
 ## Finished Product
+
+Page | Desktop | Tablet | Mobile |
+--- | --- | --- | --- |
+| Home | ![Desktop Home Page image](readme/media/index-desktop.png) | ![Tablet Home Page image ](readme/media/index-tablet.png) | ![Mobile Home Page image ](readme/media/index-mobile.png) |
+| About | ![Desktop About Page image](assets/readme_files/desktop_about.png) | ![Mobile About Page image](assets/readme_files/mobile_about.png) |
+| Search Results | ![Desktop Search Results Page image](assets/readme_files/desktop_search_results.png) | ![Mobile Search Results Page image](assets/readme_files/mobile_search_results.png) |
+| Question Detail |![Desktop Question Detail Page image](assets/readme_files/desktop_question_detail.png) | ![Mobile Question Detail Page image](assets/readme_files/mobile_question_detail.png) |
+| Ask Question |![Desktop Ask Question Page image](assets/readme_files/desktop_ask_question.png) | ![Mobile Ask Question Page image](assets/readme_files/mobile_ask_question.png) |
+| Leave Reply |![Desktop Leave Reply Page image](assets/readme_files/desktop_leave_reply.png) | ![Mobile Leave Reply Page image](assets/readme_files/mobile_leave_reply.png) |
+| Edit Question | ![Desktop Edit Question Page image](assets/readme_files/desktop_edit_question.png) | ![Mobile Edit Question Page image](assets/readme_files/mobile_edit_question.png) |
+| Delete Question |![Desktop Delete Question Page image](assets/readme_files/desktop_delete_question.png) | ![Mobile Delete Question Page image](assets/readme_files/mobile_delete_question.png) |
+| Edit Reply |![Desktop Edit Reply Page image](assets/readme_files/desktop_edit_reply.png) | ![Mobile Edit Reply Page image](assets/readme_files/mobile_edit_reply.png) |
+| Delete Reply |![Desktop Delete Reply Page image](assets/readme_files/desktop_delete_reply.png) | ![Mobile Delete Reply Page imag](assets/readme_files/mobile_delete_reply.png) |
+| Sign Up |![Desktop Sign Up Page image](assets/readme_files/desktop_sign_up.png) | ![Mobile Sign Up Page image](assets/readme_files/mobile_sign_up.png) |
+| Sign In |![Desktop Sing In Page image](assets/readme_files/desktop_login.png) | ![](assets/readme_files/mobile_login.png) |
+| Sign Out |![Desktop Sign Out Page image](assets/readme_files/desktop_logout.png) | ![Mobile Sign Out Page image](assets/readme_files/mobile_logout.png) |
+| 404 Error |![Desktop 404 Error Page image](assets/readme_files/desktop_404.png) | ![Mobile 404 Error Page image](assets/readme_files/mobile_404.png) |
+
 
 
 [Back to top ⇧](#beach-house)

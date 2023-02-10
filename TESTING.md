@@ -1,3 +1,5 @@
+# Beach House Testing
+
 [Back to the README.md file](https://github.com/CBergane/beachhouse#readme)  
 
 [View the live website here](https://airbnbbeachhouse.herokuapp.com/index)
@@ -138,3 +140,754 @@ Chrome DevTools was used during the development process to test, explore and mod
 ## Manual Testing
 
 ### Browser Compatibility
+
+Browser | Outcome | Pass/Fail | 
+--- | --- | --- |
+Google Chrome | No appearance, responsiveness nor functionality issues.| <span style="color:green">Pass</span> |
+Safari | No appearance, responsiveness nor functionality issues. | <span style="color:green">Pass</span> |
+Mozilla Firefox | No responsiveness nor functionality issues.| <span style="color:green">Pass</span> |
+Microsoft Edge | No appearance, responsiveness nor functionality issues. | <span style="color:green">Pass</span> |
+
+
+### Device Compatibility
+
+Device | Operative System |Outcome | Pass/Fail
+--- | --- | --- | --- |
+Dell Optiplex 7060 | Windows 11 | No appearance, responsiveness or functionality issues. | <span style="color:green">Pass</span> |
+MacBook Air | macOS Big Sur | No appearance, responsiveness or functionality issues. | <span style="color:green">Pass</span> |
+iPad Pro 12.9" | iOS 15 | No appearance, responsiveness or functionality issues. | <span style="color:green">Pass</span> |
+iPad Pro 10.5" | iOS 15 |No appearance, responsiveness or functionality issues. | <span style="color:green">Pass</span> |
+iPhone XR | iOS 15 |No appearance, responsiveness or functionality issues. | <span style="color:green">Pass</span> |
+iPhone 7 | iOS 15 |No appearance, responsiveness or functionality issues. | <span style="color:green">Pass</span> |
+
+### Test Results
+
+#### General
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=16>Navigation Bar</td>
+        <td rowspan=2>Main logo link</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the link redirects to the Home page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Home link</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the link redirects to the Home page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Register link</td>
+        <td rowspan=2>Unregistered</td>
+        <td>Functionality</td>
+        <td>Clicking the link redirects to the Register page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Login link</td>
+        <td rowspan=2>Unregistered</td>
+        <td>Functionality</td>
+        <td>Clicking the link redirects to the Login page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Logout link</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Clicking the link activated the Logout modal.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Our Houses link</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the link redirects to the Our Houses page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+        <td rowspan=2>Admin link</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Clicking the link redirects to the Admin page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Hamburger Menu button </td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the button toggle navigation menu.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Responsive navigation menu on smaller screens.<br>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=10>Footer</td>
+        <td rowspan=2>Logo link</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the link redirects to the home page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Facebook icon</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the link opens the Facebook page on a separate tab.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+        <tr>
+        <td rowspan=2>LinkedIn icon</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the link opens the LinkedIn page on a separate tab.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Instagram icon</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the link opens the Instagram page on a separate tab.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+        <tr>
+        <td rowspan=2>GitHub icon</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the link opens the GitHub page on a separate tab.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+</table>
+
+#### Home Page 
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Parallax image</td>
+        <td rowspan=2>Scroll function</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Scrolling the page activates the Parallax effect.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Form button</td>
+        <td rowspan=2>Submit function</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Clicking the button sends the message form and reloads the main page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Google Map</td>
+        <td rowspan=2>Location set</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Showing the location on Google maps</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+</table>
+
+#### Register 
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Send registration form</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Register the user and redirect to the main page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+</table>
+
+#### Login 
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Checking user name and password.</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>If correctly entered username and password redirect to the index page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+</table>
+
+#### Profile
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Update button</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Update the booking or house depending on with button you click.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Delete</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Activate a modal for deleting a booking.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Add house</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Sends you too an add house page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+</table>
+
+#### Our Houses
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Filter</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Displays the filter options.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Reset</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Resets the filter options and reloads the page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected</td>
+        <td><span style="color:green">Pass</span></td>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Apply.</td>
+        <td rowspan=2>All</td>
+        <td>Functionality</td>
+        <td>Apply the options for the filter and displays the houses that match.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Book this house</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Send you to the booking site for a specific house.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+</table>
+
+#### Add Booking
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Date picker</td>
+        <td rowspan=2>Pick date</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Allows you to pick a date to check in and check out.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Book this house</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Send you to the booking site for a specific house.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Book this house</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>If you choose a date in the past, the button will be blocked and display a message.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Go Back</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Send you back one page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+</table>
+
+#### Admin
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Previus month/next month</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Let you switch months back and forth.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Check out</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Let you as an admin on the site check out a guest if the check-out date is that day or has passed.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>House name</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Let you browse a house and see a preview of the inventory.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Update</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Updates the list of houses with the checked houses.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Delete message</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Lanches a modal to make sure you want to delete a message.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>    
+    <tr>
+        <td rowspan=2>Message counter</td>
+        <td rowspan=2>Span counter</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Keeps a count of how many messages there are in the database.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+    <tr>
+        <td rowspan=2>House check boxes</td>
+        <td rowspan=2>Check boxes</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>The checked houses will show on the "Our houses" page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+</table>
+
+#### House Preview
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>House card</td>
+        <td rowspan=2>A preview of the House card</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Let you see how the house card will look.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Image will load on top and the description under.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+        <tr>
+        <td rowspan=2>Inventory list</td>
+        <td rowspan=2>A list of the inventory for the house that the filter function will use.</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Let you know what the house has and not.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+</table>
+
+#### House Update
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>House Form</td>
+        <td rowspan=2>A list of inputs for the owner to fill in</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Update any fields of chooice.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Use bootstrap layout from widgets.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+        <tr>
+        <td rowspan=2>Inventory list</td>
+        <td rowspan=2>A list of the inventory for the house that the filter function will use.</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Let you know what the house has and does not.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Delete</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Lanches a modal to make sure you want to delete.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Update</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Makes the changes to the database.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page button</td>
+        <td rowspan=2>Go Back</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Sends you back one page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+</table>
+
+#### Booking Update
+
+<table>
+    <tr>
+        <th colspan=2>Feature</th>
+        <th>Users</th>
+        <th>Test</th>
+        <th>Outcome</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Booking form</td>
+        <td rowspan=2>Date picker for checkin and checkout.</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Let you pick a date.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Booking form</td>
+        <td rowspan=2>Date picker for checkin and checkout.</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Let you pick a date.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>N/A</td>
+        <td>N/A</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Page Button</td>
+        <td rowspan=2>Book</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Update the booking, if the choosen date is in the past the button will be blocked and display an error message.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>    <tr>
+        <td rowspan=2>Page Button</td>
+        <td rowspan=2>Go Back</td>
+        <td rowspan=2>Registered</td>
+        <td>Functionality</td>
+        <td>Sends you back one page.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>Hover effect working as expected.</td>
+        <td><span style="color:green">Pass</span></td>
+    </tr>
+</table>
