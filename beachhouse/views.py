@@ -410,4 +410,7 @@ def house_detail(request, pk):
 
 
 def custom_404(request, exception):
+    '''
+    A custom made 404
+    '''
     return render(request, '404.html')
