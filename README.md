@@ -180,7 +180,7 @@ Admin | ![Wireframe admin.html](readme/media/wireframe-admin.png)
 
 The colours were chosen keeping in mind simplicity but also providing the website with a modern design. This is to keep the focus on the content but also appeal to the users.
 
-![Color scheme image](readme/media/color_palette.png)
+![Color scheme image](readme/media/color-palette.png)
 
 The colour #CEE1E8 was chosen for the background to be easy on the eyes and make the text readable.
 #0D9FBE is used on the main buttons. #E75A0D is used to highlight the hover effects in the menu. #005794 is used on the navbar and the footer.
@@ -460,7 +460,7 @@ Page | Desktop | Tablet | Mobile |
 
 * [Unsplash](https://unsplash.com/)
     * The houses where taken from unspash.
-        * [serjan midili](https://unsplash.com/@s_midili)
+        * [Serjan Midili](https://unsplash.com/@s_midili)
         * [Deric](https://unsplash.com/@dericsamps)
         * [Zoltan Tasi](https://unsplash.com/@zoltantasi)
         * [Ostap Senyuk](https://unsplash.com/@kintecus)
@@ -482,14 +482,16 @@ Page | Desktop | Tablet | Mobile |
 
 ## Known Bugs
 
+* The javascript gives a warning in Chrome developer tools when there is no "go back" button.
+* It also gives warnings on the date picker but doesn't seams to affect any functions, so I have decided to ignore them.
 
 [Back to top ⇧](#beach-house)
 
 ## Acknowledgements
 
-* To my family who has been an amazing support.
-* My mentor, Marcel, for always pushing me to do more.
+* To my family, who has been a fantastic support.
+* My mentor, Marcel, for constantly pushing me to do more.
 * My amazing Slack community for giving good feedback and help.
-* Code institute tutors who have helped me with some minor code, sadly can't remember their names of them.
+* Code institute tutors who have helped me with some minor code. Sadly can't remember their names of them.
 
 [Back to top ⇧](#beach-house)
