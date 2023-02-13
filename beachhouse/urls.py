@@ -5,8 +5,7 @@ from . import views
 from .views import BookingList, AddBooking
 
 urlpatterns = [
-    path('', views.base, name='base'),
-    path('index', views.index, name='index'),
+    path('', views.index, name='index'),
     path(
         'house_list',
         views.house_list,
