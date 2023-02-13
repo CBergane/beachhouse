@@ -263,7 +263,7 @@ def house_update(request, house_id):
     if form.is_valid():
         messages.success(request, 'Your house has been updated.')
         form.save()
-        return redirect('houselist')
+        return redirect('house-list')
     return render(request, 'house_update.html', {'house': house, 'form': form})
 
 
